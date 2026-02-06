@@ -1,72 +1,108 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Verifikasi Ijazah Elektronik</title>
 
 <style>
 
-body{
-font-family:"Segoe UI", Arial, sans-serif;
-background:#eef1f5;
+*{
+box-sizing:border-box;
 margin:0;
-padding:25px;
+padding:0;
+}
+
+body{
+font-family:"Segoe UI",Arial,sans-serif;
+background:#eef1f6;
+padding:20px;
 color:#222;
 }
 
 .container{
 max-width:850px;
+width:100%;
 margin:auto;
-background:#fff;
-padding:35px;
-border-radius:8px;
-box-shadow:0 3px 12px rgba(0,0,0,0.08);
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 2px 10px rgba(0,0,0,0.08);
 }
 
-.header{
+/* HEADER */
+.header-top{
+background:linear-gradient(135deg,#4b2bbd,#5c39d6);
+color:white;
+padding:45px 20px;
 text-align:center;
-margin-bottom:15px;
+border-radius:10px;
+margin-bottom:25px;
 }
 
-.header img{
-width:95px;
-margin-bottom:10px;
+.logo-ut{
+background:white;
+display:inline-block;
+padding:10px;
+border-radius:12px;
+margin-bottom:12px;
 }
 
-.title{
+.logo-ut img{
+width:110px;
+max-width:100%;
+height:auto;
+}
+
+.header-title{
 font-size:24px;
 font-weight:600;
 margin-bottom:5px;
 }
 
-.status{
-color:#198754;
-font-weight:600;
+.header-sub{
+opacity:0.9;
 margin-bottom:25px;
 }
 
-.section{
-margin-top:20px;
+/* INFO BOX */
+.info-box{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:25px;
 }
 
-.section h2{
+.info-item h3{
+font-size:18px;
+margin-bottom:5px;
+}
+
+.info-item p{
+font-size:16px;
+}
+
+/* SECTION */
+.section-title{
 text-align:center;
+font-weight:bold;
 font-size:20px;
-border-bottom:1px solid #dcdcdc;
+margin-top:25px;
+border-bottom:1px solid #ccc;
 padding-bottom:6px;
-margin-bottom:15px;
 }
 
-table{
+/* TABLE */
+.data{
 width:100%;
 border-collapse:collapse;
 font-size:17px;
+margin-top:10px;
 }
 
-td{
-padding:8px 4px;
+.data td{
+padding:7px;
 vertical-align:top;
 }
 
@@ -76,61 +112,107 @@ font-weight:600;
 }
 
 .nomor{
+color:black;
 font-weight:600;
-color:#000;
 }
 
-.pejabat{
-margin-top:15px;
-line-height:1.6;
-}
-
+/* FOOTER */
 .footer{
 margin-top:35px;
 display:flex;
-align-items:center;
+align-items:flex-start;
 gap:12px;
 font-size:14px;
 color:#0b5ed7;
 border-top:1px solid #e1e1e1;
 padding-top:12px;
+flex-wrap:wrap;
 }
 
 .footer img{
-width:50px;
+width:55px;
+max-width:100%;
+height:auto;
 }
 
+.footer div{
+flex:1;
+min-width:200px;
+line-height:1.5;
+}
+
+/* RESPONSIVE */
 @media(max-width:600px){
-.container{
-padding:20px;
+
+.header-title{
+font-size:20px;
 }
+
+.info-box{
+flex-direction:column;
+align-items:center;
+}
+
 .label{
-width:180px;
+width:160px;
 }
+
+.footer{
+flex-direction:column;
+align-items:center;
+text-align:center;
+}
+
+.footer img{
+width:45px;
+}
+
 }
 
 </style>
+
 </head>
 
 <body>
 
 <div class="container">
 
-<div class="container">
+<!-- HEADER -->
+<div class="header-top">
 
-<div class="header">
+<div class="logo-ut">
 <img src="universitas-terbuka (1).png">
-<div class="title">Verifikasi Ijazah Elektronik</div>
-<div class="status">✔ DATA TERVERIFIKASI</div>
 </div>
-  
-<table>
-<tr><td class="label">Institusi</td><td>: Universitas Terbuka</td></tr>
-<tr><td class="label">Status Dokumen</td><td>: Sah dan Terdaftar</td></tr>
-<tr><td class="label">Sistem</td><td>: Verifikasi Ijazah Elektronik</td></tr>
-</table>
-<div class="section">
-<table>
+
+<div class="header-title">Universitas Terbuka</div>
+<div class="header-sub">Verifikasi Ijazah Elektronik</div>
+
+<div class="info-box">
+
+<div class="info-item">
+<h3>Institusi</h3>
+<p>Universitas Terbuka</p>
+</div>
+
+<div class="info-item">
+<h3>Status Dokumen</h3>
+<p>Valid</p>
+</div>
+
+<div class="info-item">
+<h3>Sistem</h3>
+<p>Verifikasi Ijazah Elektronik</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- IDENTITAS -->
+<div class="section-title">VERIFIKASI IJAZAH ELEKTRONIK</div>
+
+<table class="data">
+
 <tr><td class="label">Nama</td><td>: Muhammad Agil</td></tr>
 <tr><td class="label">NIK</td><td class="nomor">: 352209056020002</td></tr>
 <tr><td class="label">NIM</td><td class="nomor">: 2495101257</td></tr>
@@ -139,38 +221,32 @@ width:180px;
 <tr><td class="label">Program Studi</td><td>: Magister Studi Lingkungan</td></tr>
 <tr><td class="label">Tanggal Lulus</td><td>: 21 Agustus 2025</td></tr>
 <tr><td class="label">Akreditasi</td><td>: SK BAN-PT 811/SK/BAN-PT/Ak/M/III/2023</td></tr>
+
 </table>
 
-</div>
+<div class="section-title">PEJABAT PENANDATANGAN</div>
 
-<div class="section">
-<h2>PEJABAT PENANDATANGAN</h2>
-
-<div class="pejabat">
-<b>Rektor</b><br>
+<p><b>Rektor</b><br>
 Prof. Dr. Ali Muktiyanto, S.E., M.Si.<br>
-NIP. 197208242000121001
-</div>
+NIP. 197208242000121001</p>
 
-<div class="pejabat">
-<b>Dekan</b><br>
+<p><b>Dekan</b><br>
 Prof. Dr. Maman Rumanta, M.Si.<br>
-NIP. 196305091989031002
-</div>
+NIP. 196305091989031002</p>
 
-<div class="pejabat">
-<b>Tertanggal</b><br>
-01 Februari 2026
-</div>
+<p><b>Tertanggal</b><br>
+01 Februari 2026</p>
 
-</div>
-
+<!-- FOOTER -->
 <div class="footer">
+
 <img src="bsre-logo-baru-1024x340.png">
+
 <div>
 Dokumen ini ditandatangani secara elektronik menggunakan sertifikat elektronik
 yang diterbitkan oleh Balai Sertifikasi Elektronik (BSrE) Badan Siber dan Sandi Negara (BSSN).
 </div>
+
 </div>
 
 </div>
