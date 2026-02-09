@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
 <meta charset="UTF-8">
 <title>Verifikasi Ijazah Elektronik</title>
@@ -9,117 +9,132 @@
 body{
 font-family:Arial;
 margin:0;
-background:#f4f6f8;
+background:#f4f7fb;
 }
 
 /* HEADER */
 .header{
 display:flex;
 align-items:center;
-gap:20px;
-padding:22px 35px;
+padding:20px;
+background:linear-gradient(to right,#0b3c6f,#d4af37);
 color:white;
-font-weight:bold;
-font-size:24px;
-background:linear-gradient(90deg,#0c3c78,#e2b007);
 }
 
 .header img{
-height:85px;
+height:70px;
+margin-right:15px;
 }
 
-/* KONTEN */
-.container{
-width:85%;
-margin:auto;
+.header h1{
+margin:0;
+font-size:22px;
+}
+
+/* BANNER VALID */
+.banner{
+background:#0b3c6f;
+color:white;
+padding:10px;
+text-align:center;
+font-size:14px;
+}
+
+/* CARD */
+.card{
 background:white;
-padding:35px;
-margin-top:35px;
-border-radius:14px;
-box-shadow:0px 4px 15px rgba(0,0,0,0.08);
+margin:30px;
+padding:30px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.05);
+position:relative;
+overflow:hidden;
 }
 
+/* WATERMARK */
+.card::before{
+content:"UNIVERSITAS ISLAM INDONESIA";
+position:absolute;
+top:40%;
+left:10%;
+font-size:70px;
+color:rgba(0,0,0,0.03);
+transform:rotate(-30deg);
+}
+
+/* TITLE */
 .title{
 text-align:center;
-font-size:36px;
-font-weight:bold;
-margin-bottom:30px;
+font-size:30px;
+margin-bottom:25px;
 }
 
-/* STATUS */
-.status-box{
-background:white;
-padding:22px;
-border:1px solid #e5e5e5;
-margin-bottom:35px;
-}
-
-.status-grid{
-display:grid;
-grid-template-columns:1fr 1fr 1fr;
-gap:25px;
-}
-
-.status-item{
+/* STATUS PANEL */
+.status{
 display:flex;
-gap:15px;
-align-items:flex-start;
+justify-content:space-between;
+border:1px solid #e0e0e0;
+padding:20px;
+margin-bottom:25px;
+}
+
+.status-box{
+display:flex;
+align-items:center;
+gap:10px;
 }
 
 .icon{
-width:34px;
-height:34px;
-border-radius:50%;
-background:#0c3c78;
+width:35px;
+height:35px;
+background:#0b3c6f;
 color:white;
 display:flex;
 align-items:center;
 justify-content:center;
+border-radius:50%;
 font-weight:bold;
 }
 
-.label{
-font-weight:bold;
-color:#444;
-font-size:14px;
+/* TABLE */
+table{
+width:100%;
+border-collapse:collapse;
 }
 
-.value{
-color:#0c3c78;
-font-size:17px;
-margin-top:3px;
-}
-
-/* DATA */
-.data{
-max-width:700px;
-}
-
-.row{
-display:flex;
-gap:40px;
-padding:14px 0;
+td{
+padding:12px;
 border-bottom:1px solid #eee;
+color:#444;
 }
 
-.row div:first-child{
-width:220px;
-color:#666;
+/* META BOX */
+.meta{
+margin-top:20px;
+padding:15px;
+background:#f1f5fb;
+border-left:4px solid #0b3c6f;
 }
 
-.row div:last-child{
-color:#222;
+/* QR */
+.qr{
+text-align:right;
+margin-top:20px;
+}
+
+.qr img{
+width:120px;
 }
 
 /* FOOTER */
 .footer{
-margin-top:45px;
-background:#0c3c78;
+background:#0b3c6f;
 color:white;
-padding:25px;
+padding:20px;
 display:flex;
 align-items:center;
 gap:15px;
+font-size:14px;
 }
 
 .footer img{
@@ -133,63 +148,70 @@ height:45px;
 
 <div class="header">
 <img src="logo-uii.png">
-<div>
-Sistem Verifikasi Ijazah Elektronik<br>
-Universitas Islam Indonesia
-</div>
+<h1>Sistem Verifikasi Ijazah Elektronik<br>Universitas Islam Indonesia</h1>
 </div>
 
-<div class="container">
+<div class="banner">
+✔ Dokumen ini telah diverifikasi secara elektronik menggunakan Sertifikat Elektronik BSrE – BSSN
+</div>
+
+<div class="card">
 
 <div class="title">VERIFIKASI IJAZAH ELEKTRONIK</div>
 
+<div class="status">
 <div class="status-box">
-<div class="status-grid">
-
-<div class="status-item">
-<div class="icon">✓</div>
+<div class="icon">✔</div>
 <div>
-<div class="label">Status Dokumen</div>
-<div class="value">Terverifikasi</div>
+<div>Status Dokumen</div>
+<div>Terverifikasi</div>
 </div>
 </div>
 
-<div class="status-item">
+<div class="status-box">
 <div class="icon">UII</div>
 <div>
-<div class="label">Institusi</div>
-<div class="value">Universitas Islam Indonesia</div>
+<div>Institusi</div>
+<div>Universitas Islam Indonesia</div>
 </div>
 </div>
 
-<div class="status-item">
+<div class="status-box">
 <div class="icon">QR</div>
 <div>
-<div class="label">Sistem</div>
-<div class="value">Verifikasi Ijazah Elektronik</div>
+<div>Sistem</div>
+<div>Verifikasi Ijazah Elektronik</div>
 </div>
-</div>
-
 </div>
 </div>
 
-<div class="data">
+<table>
+<tr><td>Nama Lengkap</td><td>Muhammad Agil</td></tr>
+<tr><td>NIK</td><td>35227538736528376</td></tr>
+<tr><td>Nomor Ijazah</td><td>UII-2025-123456</td></tr>
+<tr><td>NIM</td><td>123456789</td></tr>
+<tr><td>Program Studi</td><td>Magister Manajemen</td></tr>
+<tr><td>Fakultas</td><td>Fakultas Bisnis dan Ekonomika</td></tr>
+<tr><td>Akreditasi</td><td>Unggul</td></tr>
+<tr><td>Rektor</td><td>Prof. Dr. XXXXX</td></tr>
+<tr><td>NIP Rektor</td><td>196000000000000</td></tr>
+<tr><td>Dekan</td><td>Dr. XXXXX</td></tr>
+<tr><td>NIP Dekan</td><td>197000000000000</td></tr>
+<tr><td>Nomor Sertifikat Elektronik</td><td>UII-EV-2025-00001234</td></tr>
+<tr><td>Kode Integritas</td><td>8F4A-9C21-EE33-AB92</td></tr>
+<tr><td>SHA256</td><td>4d6f3c1a8e3b9f7c1</td></tr>
+</table>
 
-<div class="row"><div>Nama Lengkap</div><div>Muhammad Agil</div></div>
-<div class="row"><div>NIK</div><div>35227538736528376</div></div>
-<div class="row"><div>Nomor Ijazah</div><div>UII-2025-123456</div></div>
-<div class="row"><div>NIM</div><div>123456789</div></div>
-<div class="row"><div>Program Studi</div><div>Magister Manajemen</div></div>
-<div class="row"><div>Fakultas</div><div>Fakultas Bisnis dan Ekonomika</div></div>
+<div class="meta">
+Status Sistem : Online <br>
+Waktu Server : 12 Februari 2026 00:58 WIB <br>
+Versi Sistem : 1.0.3-UII <br>
+ID Sesi Verifikasi : UII-SESSION-87234
+</div>
 
-<div class="row"><div>Akreditasi</div><div>Unggul</div></div>
-
-<div class="row"><div>Pejabat Penandatangan</div><div>Rektor & Dekan</div></div>
-<div class="row"><div>Rektor</div><div>Nama Rektor</div></div>
-<div class="row"><div>NIP Rektor</div><div>000000000000000000</div></div>
-<div class="row"><div>Dekan</div><div>Nama Dekan</div></div>
-<div class="row"><div>NIP Dekan</div><div>000000000000000000</div></div>
-
+<div class="qr">
+<img src="qr-verifikasi.png">
+<div>Scan QR untuk validasi ulang</div>
 </div>
 
 </div>
@@ -197,8 +219,7 @@ Universitas Islam Indonesia
 <div class="footer">
 <img src="bsre-logo-baru-1024x340.png">
 <div>
-Dokumen ini telah ditandatangani secara elektronik menggunakan sertifikat elektronik
-yang diterbitkan oleh Balai Sertifikasi Elektronik (BSrE), BSSN.
+Dokumen ini sah tanpa tanda tangan basah sesuai UU ITE dan ditandatangani menggunakan Sertifikat Elektronik BSrE – Badan Siber dan Sandi Negara.
 </div>
 </div>
 
