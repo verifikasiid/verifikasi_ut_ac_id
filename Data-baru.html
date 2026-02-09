@@ -9,7 +9,7 @@
 body{
 font-family:Arial;
 margin:0;
-background:#f3f6f9;
+background:#f4f6f8;
 }
 
 /* HEADER */
@@ -17,57 +17,65 @@ background:#f3f6f9;
 display:flex;
 align-items:center;
 gap:20px;
-padding:20px 30px;
+padding:22px 35px;
 color:white;
 font-weight:bold;
-font-size:22px;
+font-size:24px;
 background:linear-gradient(90deg,#0c3c78,#e2b007);
 }
 
 .header img{
-height:75px;
+height:80px;
 }
 
 /* KONTEN */
 .container{
-width:92%;
+width:85%;
 margin:auto;
 background:white;
-padding:30px;
-margin-top:30px;
+padding:35px;
+margin-top:35px;
 border-radius:14px;
 box-shadow:0px 4px 15px rgba(0,0,0,0.08);
 }
 
 .title{
 text-align:center;
-font-size:34px;
+font-size:36px;
 font-weight:bold;
 margin-bottom:30px;
 }
 
-/* STATUS BOX */
+/* STATUS */
 .status-box{
-background:#eaf3ff;
-padding:20px;
-border-left:6px solid #e2b007;
-margin-bottom:30px;
+background:white;
+padding:22px;
+border:1px solid #e5e5e5;
+margin-bottom:35px;
 }
 
 .status-grid{
 display:grid;
 grid-template-columns:1fr 1fr 1fr;
-gap:20px;
+gap:25px;
 }
 
 .status-item{
 display:flex;
-gap:12px;
+gap:15px;
 align-items:flex-start;
 }
 
-.status-item img{
-width:28px;
+.icon{
+width:34px;
+height:34px;
+border-radius:50%;
+background:#0c3c78;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
 }
 
 .label{
@@ -78,21 +86,35 @@ font-size:14px;
 
 .value{
 color:#0c3c78;
-font-size:16px;
+font-size:17px;
+font-weight:bold;
 margin-top:3px;
 }
 
 /* DATA */
+.data{
+max-width:700px;
+}
+
 .row{
 display:flex;
-justify-content:space-between;
+gap:40px;
 padding:14px 0;
 border-bottom:1px solid #eee;
 }
 
+.row div:first-child{
+width:220px;
+color:#666;
+}
+
+.row div:last-child{
+font-weight:bold;
+}
+
 /* FOOTER */
 .footer{
-margin-top:40px;
+margin-top:45px;
 background:#0c3c78;
 color:white;
 padding:25px;
@@ -110,7 +132,6 @@ height:45px;
 
 <body>
 
-<!-- HEADER -->
 <div class="header">
 <img src="logo-uii.png">
 <div>
@@ -119,17 +140,15 @@ Universitas Islam Indonesia
 </div>
 </div>
 
-<!-- KONTEN -->
 <div class="container">
 
 <div class="title">VERIFIKASI IJAZAH ELEKTRONIK</div>
 
 <div class="status-box">
-
 <div class="status-grid">
 
 <div class="status-item">
-<img src="https://cdn-icons-png.flaticon.com/512/845/845646.png">
+<div class="icon">✓</div>
 <div>
 <div class="label">Status Dokumen</div>
 <div class="value">Terverifikasi</div>
@@ -137,7 +156,7 @@ Universitas Islam Indonesia
 </div>
 
 <div class="status-item">
-<img src="https://cdn-icons-png.flaticon.com/512/3062/3062634.png">
+<div class="icon">UII</div>
 <div>
 <div class="label">Institusi</div>
 <div class="value">Universitas Islam Indonesia</div>
@@ -145,7 +164,7 @@ Universitas Islam Indonesia
 </div>
 
 <div class="status-item">
-<img src="https://cdn-icons-png.flaticon.com/512/1828/1828919.png">
+<div class="icon">QR</div>
 <div>
 <div class="label">Sistem</div>
 <div class="value">Verifikasi Ijazah Elektronik</div>
@@ -155,16 +174,17 @@ Universitas Islam Indonesia
 </div>
 </div>
 
+<div class="data">
 <div class="row"><div>Nama Lengkap</div><div>Muhammad Agil</div></div>
 <div class="row"><div>NIK</div><div>35227538736528376</div></div>
 <div class="row"><div>Nomor Ijazah</div><div>UII-2025-123456</div></div>
 <div class="row"><div>NIM</div><div>123456789</div></div>
 <div class="row"><div>Program Studi</div><div>Magister Manajemen</div></div>
 <div class="row"><div>Fakultas</div><div>Fakultas Bisnis dan Ekonomika</div></div>
+</div>
 
 </div>
 
-<!-- FOOTER BSRE -->
 <div class="footer">
 <img src="bsre-logo-baru-1024x340.png">
 <div>
