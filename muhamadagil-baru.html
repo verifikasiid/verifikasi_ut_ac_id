@@ -3,132 +3,121 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Verifikasi Ijazah Elektronik UMS</title>
+<title>Sistem Verifikasi Ijazah Elektronik UMS</title>
 
 <style>
 
 body{
-font-family:Arial, sans-serif;
+font-family:Arial, Helvetica, sans-serif;
+background:#f5f7fa;
 margin:0;
-background:#eef3f8;
 }
 
-/* HEADER KHUSUS UMS */
+/* HEADER RESMI */
 .header{
-padding:30px;
-color:white;
-background:linear-gradient(135deg,#004e92,#00c6ff);
+background:white;
+border-bottom:4px solid #005baa;
+padding:15px 25px;
 display:flex;
 align-items:center;
 gap:15px;
 }
 
 .header img{
-height:60px;
+height:55px;
 }
 
 .header h1{
+font-size:18px;
 margin:0;
-font-size:22px;
+color:#003366;
 }
 
-/* STATUS BAR */
-.banner{
-background:#003a6f;
-color:white;
-padding:10px;
-text-align:center;
-font-size:14px;
+/* STATUS VALID */
+.valid{
+background:#e8f5e9;
+border:1px solid #4caf50;
+color:#2e7d32;
+padding:12px;
+margin:20px;
+font-weight:bold;
 }
 
-/* CARD UTAMA */
-.card{
+/* BOX UTAMA */
+.container{
 background:white;
-margin:25px;
-padding:35px;
-border-radius:12px;
-box-shadow:0 5px 20px rgba(0,0,0,0.05);
-position:relative;
-}
-
-/* WATERMARK */
-.card::after{
-content:"";
-background:url('logo-ums.png') center no-repeat;
-background-size:250px;
-opacity:0.04;
-position:absolute;
-top:0;
-bottom:0;
-left:0;
-right:0;
+margin:20px;
+padding:25px;
+border:1px solid #ddd;
 }
 
 /* TITLE */
 .title{
 text-align:center;
-font-size:28px;
-margin-bottom:25px;
+font-size:26px;
 font-weight:bold;
+margin-bottom:20px;
 }
 
-/* PANEL STATUS */
-.status{
-display:flex;
-justify-content:space-between;
-gap:10px;
-margin-bottom:25px;
-}
-
-.status-box{
-flex:1;
-display:flex;
-align-items:center;
-gap:10px;
-padding:15px;
-border-radius:10px;
-background:#f4f8fc;
-}
-
-.icon{
-width:40px;
-height:40px;
-background:#004e92;
-color:white;
-display:flex;
-align-items:center;
-justify-content:center;
-border-radius:50%;
-font-weight:bold;
-}
-
-/* DATA GRID */
-.data{
+/* GRID */
+.grid{
 display:grid;
-grid-template-columns:200px auto;
-row-gap:12px;
-font-size:15px;
-color:#333;
+grid-template-columns:1fr 160px;
+gap:20px;
 }
 
-.label{
-color:#666;
+/* DATA TABLE */
+table{
+width:100%;
+border-collapse:collapse;
+font-size:15px;
+}
+
+td{
+padding:10px;
+border-bottom:1px solid #eee;
+}
+
+td:first-child{
+width:200px;
+color:#555;
+}
+
+/* QR */
+.qr{
+text-align:center;
+}
+
+.qr img{
+width:140px;
+border:1px solid #ddd;
+padding:5px;
+background:white;
+}
+
+/* META */
+.meta{
+margin-top:20px;
+background:#f0f4f9;
+padding:15px;
+border-left:4px solid #005baa;
+font-size:14px;
 }
 
 /* FOOTER */
 .footer{
-background:#003a6f;
+background:#003366;
 color:white;
-padding:20px;
+padding:18px;
 display:flex;
 align-items:center;
 gap:15px;
-font-size:14px;
+font-size:13px;
 margin-top:20px;
 }
 
 .footer img{
-height:45px;
+height:40px;
 }
 
 </style>
@@ -141,44 +130,42 @@ height:45px;
 <h1>Sistem Verifikasi Ijazah Elektronik<br>Universitas Muhammadiyah Surakarta</h1>
 </div>
 
-<div class="banner">
-✔ Dokumen telah diverifikasi secara elektronik menggunakan Sertifikat Elektronik BSrE – BSSN
+<div class="valid">
+✔ Status Dokumen : VALID – Telah ditandatangani menggunakan Sertifikat Elektronik BSrE – BSSN
 </div>
 
-<div class="card">
+<div class="container">
 
-<div class="title">VERIFIKASI IJAZAH ELEKTRONIK</div>
+<div class="title">HASIL VERIFIKASI IJAZAH ELEKTRONIK</div>
 
-<div class="status">
-<div class="status-box">
-<div class="icon">✔</div>
+<div class="grid">
+
 <div>
-Status Dokumen<br><b>Terverifikasi</b>
-</div>
-</div>
-
-<div class="status-box">
-<div class="icon">UMS</div>
-<div>
-Institusi<br><b>Universitas Muhammadiyah Surakarta</b>
-</div>
-</div>
-
-<div class="status-box">
-<div class="icon">QR</div>
-<div>
-Sistem<br><b>Verifikasi Ijazah Elektronik</b>
-</div>
-</div>
+<table>
+<tr><td>Nama Lengkap</td><td>: Muhammad Agil</td></tr>
+<tr><td>NIK</td><td>: 35227538736*****02</td></tr>
+<tr><td>NIM</td><td>: 23313164</td></tr>
+<tr><td>Nomor Ijazah</td><td>: 92/UMS-S2/MM/3/87172/2025</td></tr>
+<tr><td>Program Studi</td><td>: Sarjana Agama (S1)</td></tr>
+<tr><td>Rektor</td><td>: Prof. Dr. Sofyan Anif, M.Si</td></tr>
+<tr><td>No Sertifikat Elektronik</td><td>: UMS-EV-2025-000001</td></tr>
+<tr><td>Kode Integritas</td><td>: 8F4A-9C21-EE33-AB92</td></tr>
+<tr><td>Hash SHA256</td><td>: 4d6f3c1a8e3b9f7c1</td></tr>
+</table>
 </div>
 
-<div class="data">
-<div class="label">Nama Lengkap</div><div>: Muhammad Agil</div>
-<div class="label">NIK</div><div>: 35227538736*****02</div>
-<div class="label">NIM</div><div>: 23313164</div>
-<div class="label">Nomor Ijazah</div><div>: 92/UMS-S2/MM/3/87172/2025</div>
-<div class="label">Program Studi</div><div>: Sarjana Agama (S1)</div>
-<div class="label">Rektor</div><div>: Prof. Dr. Sofyan Anif, M.Si</div>
+<div class="qr">
+<img src="qr-verifikasi.png">
+<div>Scan Ulang</div>
+</div>
+
+</div>
+
+<div class="meta">
+Status Sistem : Online<br>
+Waktu Server : 26 Oktober 2025 20:12 WIB<br>
+Versi Sistem : 2.1.0-UMS<br>
+ID Verifikasi : UMS-VERIFY-87234
 </div>
 
 </div>
@@ -186,7 +173,7 @@ Sistem<br><b>Verifikasi Ijazah Elektronik</b>
 <div class="footer">
 <img src="bsre-logo-baru-1024x340.png">
 <div>
-Dokumen sah tanpa tanda tangan basah sesuai UU ITE dan ditandatangani menggunakan Sertifikat Elektronik BSrE – Badan Siber dan Sandi Negara.
+Dokumen ini sah tanpa tanda tangan basah sesuai UU ITE dan telah ditandatangani menggunakan Sertifikat Elektronik yang diterbitkan oleh BSrE – Badan Siber dan Sandi Negara.
 </div>
 </div>
 
