@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistem Verifikasi Syahadah Nasional</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+<div id="portal" class="bg-white shadow-xl rounded-2xl p-8 max-w-xl w-full">
+
+<h1 class="text-2xl font-bold text-center text-green-800">
+SISTEM VERIFIKASI SYAHADAH TAHFIDZ NASIONAL
+</h1>
+
+<p class="text-center text-gray-600 mb-6">
+AL-MAKTAB AS-SANAD AR-ROBBANIYAH
+</p>
+
+<form id="verifyForm" class="space-y-4">
+
+<input
+id="nomor"
+type="text"
+placeholder="Masukkan Nomor Syahadah"
+required
+class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-600"
+/>
+
+<button
+type="submit"
+class="w-full bg-green-700 text-white py-3 rounded-lg font-semibold hover:bg-green-800"
+>
+Verifikasi Dokumen
+</button>
+
+</form>
+</div>
+
+
+<div id="identitas" class="hidden max-w-4xl w-full bg-white rounded-2xl shadow-xl overflow-hidden">
+
+<div class="bg-green-900 text-white p-6">
+<h2 class="text-xl font-bold">
+✔ TERVERIFIKASI NASIONAL
+</h2>
+<p>Dokumen telah diverifikasi melalui sistem digital nasional</p>
+</div>
+
+<div class="h-1 w-full flex">
+<div class="bg-blue-700" style="width:87%"></div>
+<div class="bg-yellow-400" style="width:13%"></div>
+</div>
+
+<div class="p-8 grid md:grid-cols-2 gap-6 text-gray-800">
+
+<div>
+<p class="text-sm text-gray-500">Nomor Registrasi</p>
+<p id="reg"></p>
+</div>
+
+<div>
+<p class="text-sm text-gray-500">Nomor Syahadah</p>
+<p id="syahadah"></p>
+</div>
+
+<div>
+<p class="text-sm text-gray-500">Nama Lengkap</p>
+<p id="nama"></p>
+</div>
+
+<div>
+<p class="text-sm text-gray-500">Tempat Tanggal Lahir</p>
+<p id="ttl"></p>
+</div>
+
+<div>
+<p class="text-sm text-gray-500">Alamat</p>
+<p id="alamat"></p>
+</div>
+
+<div>
+<p class="text-sm text-gray-500">Kategori</p>
+<p id="kategori"></p>
+</div>
+
+<div>
+<p class="text-sm text-gray-500">Penguji</p>
+<p id="penguji"></p>
+</div>
+
+<div>
+<p class="text-sm text-gray-500">Status Kelulusan</p>
+<p class="text-green-700 font-bold" id="status"></p>
+</div>
+
+</div>
+</div>
+
+
+<script>
+
+const database = {
+
+"001":{
+reg:"REG-2025-001",
+syahadah:"001",
+nama:"Ainindya Aulia Ramadhani",
+ttl:"Klaten, 1 Mei 2010",
+alamat:"Krajan, Jomboran - Klaten Tengah",
+kategori:"Tasmi Juz 30",
+penguji:"Al-Ustadzah Syahidah Salsabila",
+status:"JAYYID / LULUS"
+},
+
+"002":{
+reg:"REG-2025-002",
+syahadah:"002",
+nama:"Muhammad Ahmad",
+ttl:"Solo, 12 Juni 2009",
+alamat:"Kartasura",
+kategori:"Tahfidz 10 Juz",
+penguji:"Ustadz Furqan Syafrizal",
+status:"LULUS"
+},
+
+"003":{
+reg:"REG-2025-003",
+syahadah:"003",
+nama:"Siti Khadijah",
+ttl:"Boyolali, 5 Mei 2011",
+alamat:"Ngemplak",
+kategori:"Tahsin",
+penguji:"Ustadz Muhammad Agil",
+status:"LULUS"
+}
+
+};
+
+document.getElementById("verifyForm").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+let nomor=document.getElementById("nomor").value.trim();
+
+if(database[nomor]){
+
+let d=database[nomor];
+
+document.getElementById("portal").classList.add("hidden");
+document.getElementById("identitas").classList.remove("hidden");
+
+document.getElementById("reg").innerText=d.reg;
+document.getElementById("syahadah").innerText=d.syahadah;
+document.getElementById("nama").innerText=d.nama;
+document.getElementById("ttl").innerText=d.ttl;
+document.getElementById("alamat").innerText=d.alamat;
+document.getElementById("kategori").innerText=d.kategori;
+document.getElementById("penguji").innerText=d.penguji;
+document.getElementById("status").innerText=d.status;
+
+}else{
+
+alert("Data tidak ditemukan");
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
