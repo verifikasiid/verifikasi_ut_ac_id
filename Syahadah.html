@@ -7,122 +7,88 @@
 <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-50">
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
 
-<!-- HEADER -->
-<div class="bg-green-800 text-white">
-<div class="max-w-5xl mx-auto flex items-center gap-4 px-6 py-4">
+<div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-lg">
 
-<img src="logo-tahfidz.png" class="h-14">
-
-<div>
-<h1 class="font-bold text-lg">
+<h1 class="text-2xl font-bold text-center text-green-700 mb-2">
 Sistem Verifikasi Syahadah Tahfidz
 </h1>
-<p class="text-sm">
+
+<p class="text-center text-gray-600 mb-6">
 AL-MAKTAB AS-SANAD AR-ROBBANIYAH
 </p>
-</div>
 
-</div>
-</div>
+<input id="nomor"
+placeholder="Masukkan Nomor Syahadah (contoh: 1001)"
+class="w-full border rounded-lg px-4 py-2 mb-4"/>
 
-<!-- INPUT -->
-<div id="inputPage" class="max-w-xl mx-auto bg-white shadow-lg mt-10 p-8 rounded-xl text-center">
-
-<h2 class="text-xl font-bold mb-4">Portal Verifikasi Syahadah</h2>
-
-<form id="form">
-
-<input id="nomor" required
-placeholder="Nomor Syahadah"
-class="w-full border px-4 py-2 rounded-lg mb-4">
-
-<button class="w-full bg-green-700 text-white py-2 rounded-lg">
+<button onclick="cekData()"
+class="w-full bg-green-700 text-white py-2 rounded-lg font-semibold">
 Verifikasi
 </button>
 
-</form>
-</div>
+<div id="hasil" class="mt-6 hidden border rounded-xl p-4"></div>
 
-<!-- IDENTITAS -->
-<div id="resultPage" class="max-w-5xl mx-auto hidden mt-10 px-6">
-
-<div class="bg-green-50 border border-green-300 p-4 rounded-lg mb-6">
-<p class="font-bold text-green-700">
-✔ SYAHADAH TERVALIDASI SECARA NASIONAL
-</p>
-<p class="text-sm text-green-600">
-AL-MAKTAB AS-SANAD AR-ROBBANIYAH Verification System
-</p>
-</div>
-
-<div class="bg-white shadow-lg rounded-xl p-8">
-
-<h3 class="font-bold text-lg mb-6 border-b pb-3">
-Identitas Pemegang Syahadah
-</h3>
-
-<div id="dataBox" class="grid md:grid-cols-2 gap-3 text-sm"></div>
-
-</div>
 </div>
 
 <script>
 
 const database={
+ "1001":{
+  nama:"Ainindya Aulia Ramadhani",
+  ttl:"Klaten, 1 Mei 2010",
+  alamat:"Klaten Tengah",
+  kategori:"Tasmi Juz 30",
+  penguji:"Ustadzah Syahidah",
+  status:"VALID"
+ },
 
-"SF-TQ26-25925":{
-
-nomorInduk:"SF-TQ 26XXXII.25925",
-nama:"Ainindya Aulia Ramadhani",
-ttl:"Klaten, 1 Mei 2010",
-alamat:"Krajan, Jomboran - Klaten Tengah",
-kategori:"Tasmi' Juz 30",
-penguji:"Al-Ustadzah Syahidah Salsabila",
-status:"Jayyid",
-nomorSyahadah:"SK/TAHFIDZ/001/2025",
-lembaga:"AL-MAKTAB AS-SANAD AR-ROBBANIYAH"
-
-}
-
+ "1002":{
+  nama:"Ahmad Santri",
+  ttl:"Solo, 2 Februari 2009",
+  alamat:"Surakarta",
+  kategori:"Tasmi Juz 20",
+  penguji:"Ustadz Furqan",
+  status:"VALID"
+ }
 };
 
-document.getElementById("form")
-.addEventListener("submit",function(e){
-
-e.preventDefault();
+function cekData(){
 
 let nomor=document.getElementById("nomor").value.trim();
+let hasil=document.getElementById("hasil");
 
 if(database[nomor]){
 
 let d=database[nomor];
 
-document.getElementById("inputPage").classList.add("hidden");
-document.getElementById("resultPage").classList.remove("hidden");
+hasil.innerHTML=`
+<h2 class="text-lg font-bold text-green-700 mb-2">
+✅ Dokumen Valid Nasional
+</h2>
 
-document.getElementById("dataBox").innerHTML=`
-
-<p><strong>Nomor Induk Tahfidz:</strong> ${d.nomorInduk}</p>
-<p><strong>Nama:</strong> ${d.nama}</p>
-<p><strong>Tempat & Tanggal Lahir:</strong> ${d.ttl}</p>
-<p><strong>Alamat:</strong> ${d.alamat}</p>
-<p><strong>Kategori Syahadah:</strong> ${d.kategori}</p>
-<p><strong>Penguji:</strong> ${d.penguji}</p>
-<p><strong>Status:</strong> ${d.status}</p>
-<p><strong>Nomor Syahadah:</strong> ${d.nomorSyahadah}</p>
-<p><strong>Lembaga:</strong> ${d.lembaga}</p>
-
+<p><b>Nama:</b> ${d.nama}</p>
+<p><b>TTL:</b> ${d.ttl}</p>
+<p><b>Alamat:</b> ${d.alamat}</p>
+<p><b>Kategori:</b> ${d.kategori}</p>
+<p><b>Penguji:</b> ${d.penguji}</p>
+<p><b>Status:</b> <span class="text-green-600 font-semibold">${d.status}</span></p>
 `;
 
 }else{
 
-alert("Data Tidak Ditemukan");
+hasil.innerHTML=`
+<p class="text-red-600 font-semibold">
+❌ Data tidak ditemukan
+</p>
+`;
 
 }
 
-});
+hasil.classList.remove("hidden");
+
+}
 
 </script>
 
