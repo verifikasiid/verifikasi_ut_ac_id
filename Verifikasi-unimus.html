@@ -3,207 +3,218 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portal Verifikasi Data Akademik | UNIMUS</title>
+<title>Portal Verifikasi Data Akademik</title>
 
 <style>
 body{
-  margin:0;
-  font-family:'Segoe UI',sans-serif;
-  background:#f4f6f9;
+    font-family: Arial, sans-serif;
+    margin:0;
+    background: linear-gradient(to right,#0c2d6b,#1b4fa3);
 }
 
-/* HEADER */
-.header{
-  background:#0d2f5f;
-  text-align:center;
-  padding:40px 20px;
-  color:#fff;
-}
-.header img{
-  width:85px;
-  margin-bottom:10px;
-}
-.header h1{
-  margin:0;
-  letter-spacing:2px;
-}
-.header p{
-  margin-top:6px;
-  opacity:0.9;
-}
-.gold-line{
-  height:4px;
-  background:linear-gradient(to right,#c9a227,#f1c40f,#c9a227);
+/* HALAMAN AWAL */
+#halamanAwal{
+    display:flex;
+    height:100vh;
+    justify-content:center;
+    align-items:center;
 }
 
-/* FORM */
-.form-box{
-  max-width:700px;
-  margin:40px auto;
-  background:#fff;
-  padding:30px;
-  border-radius:12px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.05);
-}
-.form-box input{
-  width:100%;
-  padding:14px;
-  font-size:16px;
-  border-radius:8px;
-  border:1px solid #ccc;
-}
-.form-box button{
-  margin-top:15px;
-  width:100%;
-  padding:14px;
-  font-size:16px;
-  border:none;
-  border-radius:8px;
-  background:linear-gradient(to right,#c9a227,#f1c40f);
-  cursor:pointer;
-  font-weight:600;
+.card{
+    background:white;
+    padding:40px;
+    width:420px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
 }
 
-/* RESULT */
-.result{
-  max-width:900px;
-  margin:30px auto;
-  padding:30px;
-  background:#fff;
-  border-left:6px solid #d4af37;
-  border-radius:12px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.05);
-  display:none;
-  opacity:0;
-  transition:all 0.5s ease;
+.logo{
+    width:140px;
+    margin-bottom:20px;
 }
-.result.show{
-  display:block;
-  opacity:1;
+
+input{
+    width:100%;
+    padding:12px;
+    margin-top:15px;
+    border-radius:8px;
+    border:1px solid #ccc;
 }
+
+button{
+    width:100%;
+    margin-top:20px;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:linear-gradient(to right,#f4c430,#d4a017);
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* HALAMAN HASIL */
+#halamanHasil{
+    display:none;
+    padding:40px;
+    background:#f4f6fb;
+    min-height:100vh;
+}
+
+.header-hasil{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.header-hasil img{
+    width:150px;
+}
+
+.kartu-hasil{
+    background:white;
+    max-width:650px;
+    margin:0 auto;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+.status-badge{
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.aktif{
+    background:#d4edda;
+    color:#155724;
+}
+
+.tidak{
+    background:#f8d7da;
+    color:#721c24;
+}
+
 .data-item{
-  margin-bottom:15px;
+    margin-bottom:10px;
 }
-.data-item strong{
-  display:block;
-  font-size:14px;
-  color:#666;
-}
-.data-item p{
-  margin:0;
-  font-size:18px;
-}
-.status{
-  margin-top:20px;
-  padding:10px 20px;
-  border-radius:30px;
-  display:inline-block;
-  background:linear-gradient(to right,#c9a227,#f1c40f);
-  font-weight:600;
-}
-.notfound{
-  text-align:center;
-  font-size:18px;
-  color:red;
-  padding:20px;
-}
-.footer{
-  text-align:center;
-  font-size:12px;
-  margin:40px 0;
-  color:#777;
+
+.btn-kembali{
+    margin-top:25px;
+    text-align:center;
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">
-  <img src="logo-unimus.png" alt="Logo UNIMUS">
-  <h1>UNIVERSITAS MUHAMMADIYAH SEMARANG</h1>
-  <p>Portal Resmi Verifikasi Data Akademik</p>
+<!-- HALAMAN PENCARIAN -->
+<div id="halamanAwal">
+  <div class="card">
+      <img src="logo-unimus.png" class="logo">
+      <h2>Portal Verifikasi Data Akademik</h2>
+      <p>Masukkan Nama (tanpa gelar)</p>
+
+      <input type="text" id="keyword" placeholder="Contoh: Agil">
+      <button onclick="verifikasiData()">Verifikasi Data</button>
+  </div>
 </div>
 
-<div class="gold-line"></div>
+<!-- HALAMAN HASIL -->
+<div id="halamanHasil">
+    <div class="header-hasil">
+        <img src="logo-unimus.png">
+        <h2>Hasil Verifikasi Data Akademik</h2>
+    </div>
 
-<!-- FORM -->
-<div class="form-box">
-  <label>Identifikasi Data (NIDN / Nama Lengkap)</label>
-  <input type="text" id="keyword" placeholder="Masukkan NIDN atau Nama Lengkap">
-  <button onclick="cariData()">Verifikasi Data</button>
-</div>
+    <div class="kartu-hasil" id="hasilKonten"></div>
 
-<!-- HASIL -->
-<div id="hasil" class="result"></div>
-
-<div class="footer">
-© 2026 Universitas Muhammadiyah Semarang — Sistem Verifikasi Internal
+    <div class="btn-kembali">
+        <button onclick="kembali()">Kembali</button>
+    </div>
 </div>
 
 <script>
 
-const database = {
+const database = [
+{
+    nama: "Prof. Dr. H. Masrukhi, M.Pd.",
+    keyword: "masrukhi",
+    jabatan: "Rektor",
+    nidn: "0001016301",
+    masaKerja: "2022 – 2026",
+    noSK: "SK Rektor No. 123/UNIMUS/2022",
+    status: "Aktif",
+    kepegawaian: "Dosen Tetap Yayasan"
+},
+{
+    nama: "Dr. Andi Setiawan, S.E., M.M.",
+    keyword: "andi",
+    jabatan: "Dekan Fakultas Bisnis dan Ekonomi",
+    nidn: "0412107502",
+    masaKerja: "2023 – 2027",
+    noSK: "SK Dekan No. 045/FBE/2023",
+    status: "Aktif",
+    kepegawaian: "Dosen Tetap"
+},
+{
+    nama: "Muhammad Agil, S.M., M.M., M.Ling.",
+    keyword: "muhammad agil",
+    jabatan: "Dosen Manajemen",
+    nidn: "01261627119",
+    masaKerja: "01 maret – 01 juni 2026",
+    noSK: "SK Pengangkatan No. 210/FBE/2026",
+    status: "Aktif",
+    kepegawaian: "Dosen Kontrak"
+}
+];
 
-  "00251276278":{
-    nama:"Muhammad Agil, S.M., M.M., M.Ling.",
-    jabatan:"Dosen Manajemen",
-    unit:"Fakultas Ekonomi dan Bisnis",
-    statusKepegawaian:"Dosen Kontrak",
-    masaKerja:"01 Maret 2026 – 01 Juni 2026",
-    noSK:"0123/SK-UNIMUS/II/2026",
-    tanggalSK:"22 Februari 2026",
-    registrasi:"VRF-UNIMUS-2026-000145",
-    status:"TERVALIDASI & AKTIF"
-  },
+function verifikasiData(){
 
-  "prof. dr. h. masrukhi":{
-    nama:"Prof. Dr. H. Masrukhi, M.Pd.",
-    jabatan:"Rektor",
-    unit:"Rektorat Universitas Muhammadiyah Semarang",
-    statusKepegawaian:"Pejabat Struktural",
-    masaKerja:"2023 – 2027",
-    noSK:"SK-PPMUH-REKTOR-2023",
-    tanggalSK:"20 Juli 2023",
-    registrasi:"VRF-UNIMUS-REKTOR-2026",
-    status:"TERVALIDASI & AKTIF"
-  },
+    const input = document.getElementById("keyword").value.toLowerCase();
 
-  "dr. andwiani sinarasri":{
-    nama:"Dr. Andwiani Sinarasri, S.E., M.Si.",
-    jabatan:"Dekan Fakultas Ekonomi dan Bisnis",
-    unit:"Fakultas Ekonomi dan Bisnis",
-    statusKepegawaian:"Pejabat Struktural",
-    masaKerja:"2023 – 2027",
-    noSK:"SK-UNIMUS-FEB-2023",
-    tanggalSK:"10 Agustus 2023",
-    registrasi:"VRF-UNIMUS-DEKANFEB-2026",
-    status:"TERVALIDASI & AKTIF"
-  }
+    const data = database.find(item => 
+        item.keyword.includes(input)
+    );
 
-};
+    document.getElementById("halamanAwal").style.display="none";
+    document.getElementById("halamanHasil").style.display="block";
 
-function cariData(){
-  let input = document.getElementById("keyword").value.toLowerCase().trim();
-  let hasil = document.getElementById("hasil");
+    if(data){
 
-  if(database[input]){
-    let d = database[input];
-    hasil.innerHTML = `
-      <div class="data-item"><strong>Nama Lengkap</strong><p>${d.nama}</p></div>
-      <div class="data-item"><strong>Jabatan</strong><p>${d.jabatan}</p></div>
-      <div class="data-item"><strong>Unit Kerja</strong><p>${d.unit}</p></div>
-      <div class="data-item"><strong>Status Kepegawaian</strong><p>${d.statusKepegawaian}</p></div>
-      <div class="data-item"><strong>Masa Kerja / Jabatan</strong><p>${d.masaKerja}</p></div>
-      <div class="data-item"><strong>Nomor SK Pengangkatan</strong><p>${d.noSK}</p></div>
-      <div class="data-item"><strong>Tanggal SK</strong><p>${d.tanggalSK}</p></div>
-      <div class="data-item"><strong>Nomor Registrasi Verifikasi</strong><p>${d.registrasi}</p></div>
-      <div class="status">✓ ${d.status}</div>
-    `;
-  }else{
-    hasil.innerHTML = `<div class="notfound">Data Tidak Ditemukan</div>`;
-  }
+        const badgeClass = data.status === "Aktif" ? "aktif" : "tidak";
+        const icon = data.status === "Aktif" ? "✅ Terverifikasi" : "❌ Tidak Aktif";
 
-  hasil.classList.add("show");
+        document.getElementById("hasilKonten").innerHTML = `
+            <h3 style="text-align:center;color:green;">DATA DITEMUKAN</h3>
+            <div style="text-align:center;margin-bottom:15px;">
+                <span class="status-badge ${badgeClass}">
+                    ${icon}
+                </span>
+            </div>
+
+            <div class="data-item"><strong>Nama Lengkap :</strong> ${data.nama}</div>
+            <div class="data-item"><strong>Jabatan :</strong> ${data.jabatan}</div>
+            <div class="data-item"><strong>Status Kepegawaian :</strong> ${data.kepegawaian}</div>
+            <div class="data-item"><strong>NIDN/NIDK :</strong> ${data.nidn}</div>
+            <div class="data-item"><strong>Masa Jabatan :</strong> ${data.masaKerja}</div>
+            <div class="data-item"><strong>Nomor SK :</strong> ${data.noSK}</div>
+            <div class="data-item"><strong>Tanggal Verifikasi :</strong> ${new Date().toLocaleDateString()}</div>
+        `;
+
+    } else {
+
+        document.getElementById("hasilKonten").innerHTML = `
+            <h3 style="color:red;text-align:center;">DATA TIDAK DITEMUKAN</h3>
+            <p style="text-align:center;">Data tidak terdaftar dalam sistem verifikasi internal.</p>
+        `;
+    }
+}
+
+function kembali(){
+    document.getElementById("halamanHasil").style.display="none";
+    document.getElementById("halamanAwal").style.display="flex";
 }
 
 </script>
