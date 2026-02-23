@@ -6,211 +6,366 @@
 <title>Portal Verifikasi Data Akademik</title>
 
 <style>
+:root{
+    --biru:#163d7a;
+    --biru2:#214f9c;
+    --emas:#c9a227;
+    --abu:#f4f6fb;
+}
+
 body{
     margin:0;
-    font-family: "Segoe UI", Tahoma, sans-serif;
-    background: linear-gradient(180deg,#1e3a8a,#1e40af);
-    color:#1f2937;
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:linear-gradient(135deg,var(--biru),var(--biru2));
 }
 
 /* HEADER */
 .header{
     text-align:center;
-    padding:40px 20px 20px;
+    padding:60px 20px 20px;
+}
+
+.logo{
+    width:150px;
+    margin-bottom:12px;
+}
+
+.judul{
     color:#fff;
-}
-
-.header img{
-    width:110px;
-    margin-bottom:10px;
-}
-
-.header h1{
-    margin:5px 0;
+    font-size:28px;
     font-weight:600;
 }
 
-.header p{
-    margin:0;
-    opacity:.9;
+.subjudul{
+    color:#e3e8f2;
+    font-size:14px;
 }
 
-/* CARD */
+.garis{
+    width:120px;
+    height:4px;
+    background:var(--emas);
+    margin:18px auto 0;
+    border-radius:2px;
+}
+
+/* CARD PENCARIAN */
 .card{
     background:#fff;
-    width:90%;
-    max-width:720px;
-    margin:30px auto;
-    padding:30px;
-    border-radius:14px;
-    box-shadow:0 10px 25px rgba(0,0,0,.15);
-    border-top:6px solid #fbbf24;
+    max-width:520px;
+    margin:40px auto;
+    padding:40px 38px;
+    border-radius:16px;
+    box-shadow:0 14px 35px rgba(0,0,0,.25);
+    border-top:6px solid var(--emas);
 }
 
-/* INPUT */
-label{
+.label-input{
+    font-size:14px;
     font-weight:600;
     color:#374151;
+    margin-bottom:6px;
 }
 
 input{
     width:100%;
-    padding:12px;
-    margin-top:8px;
+    padding:14px;
     border-radius:8px;
-    border:1px solid #d1d5db;
+    border:1px solid #d0d6e2;
     font-size:15px;
 }
 
-/* BUTTON */
 button{
     width:100%;
-    margin-top:18px;
+    margin-top:22px;
     padding:14px;
     border:none;
-    border-radius:10px;
-    background:linear-gradient(90deg,#fbbf24,#f59e0b);
-    font-size:16px;
+    border-radius:8px;
+    background:linear-gradient(to right,#f4c430,var(--emas));
     font-weight:600;
     cursor:pointer;
 }
 
-/* HASIL */
-.hasil-wrapper{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    gap:30px;
-    flex-wrap:wrap;
+/* HALAMAN HASIL */
+#halamanHasil{
+    display:none;
+    background:var(--abu);
+    min-height:100vh;
 }
 
-.data-dosen p{
-    margin:6px 0;
+.header-hasil{
+    text-align:center;
+    padding:40px 20px 10px;
 }
 
-.data-dosen strong{
-    font-weight:600;
+.header-hasil img{
+    width:130px;
+}
+
+/* KARTU HASIL AKADEMIK */
+.kartu{
+    background:#fff;
+    max-width:720px;
+    margin:20px auto;
+    padding:40px 48px;
+    border-radius:14px;
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+    border-top:5px solid var(--emas);
+}
+
+/* GRID DATA + FOTO */
+.kartu-grid{
+    display:grid;
+    grid-template-columns: 1fr 150px;
+    gap:24px;
+    align-items:start;
 }
 
 /* FOTO DOSEN */
-.foto-dosen{
-    width:150px;
-    text-align:center;
-}
-
-.foto-dosen img{
+.foto{
     width:150px;
     height:200px;
-    object-fit:cover;
-    border-radius:8px;
-    border:1px solid #d1d5db;
-    padding:4px;
-    background:#fff;
+    border-radius:10px;
+    overflow:hidden;
+    border:3px solid #e5e7eb;
+    box-shadow:0 4px 10px rgba(0,0,0,.08);
 }
 
-.foto-dosen span{
-    display:block;
-    margin-top:6px;
-    font-size:12px;
-    color:#6b7280;
+.foto img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
 /* STATUS */
-.status{
+.status-title{
     text-align:center;
-    margin-bottom:20px;
-}
-
-.status h2{
-    margin:0;
-    color:#16a34a;
+    font-size:22px;
+    font-weight:600;
+    color:#1f8a3b;
+    letter-spacing:.5px;
 }
 
 .badge{
     display:inline-block;
-    background:#dcfce7;
-    color:#166534;
-    padding:6px 14px;
+    margin-top:8px;
+    padding:4px 14px;
     border-radius:20px;
-    font-size:14px;
-    margin-top:6px;
+    font-size:13px;
+    background:#e9f5ee;
+    color:#1f8a3b;
+}
+
+.data{
+    margin-top:20px;
+}
+
+.row{
+    display:grid;
+    grid-template-columns: 220px 20px 1fr;
+    margin:10px 0;
+    font-size:15.5px;
+    line-height:1.6;
+}
+
+.label{
+    color:#444;
+    font-weight:500;
+}
+
+.separator{
+    text-align:center;
+}
+
+.value{
+    color:#111;
+}
+
+/* TOMBOL */
+.btn-kembali{
+    max-width:720px;
+    margin:20px auto 40px;
 }
 
 /* FOOTER */
 .footer{
+    margin-top:60px;
+    background:#eef1f6;
+    border-top:1px solid #d6dbe6;
+    padding:22px 20px;
     text-align:center;
-    color:#9ca3af;
-    font-size:13px;
-    margin:40px 0 20px;
+    font-size:13.5px;
+    color:#6b7280;
+    line-height:1.7;
+}
+
+.footer strong{
+    color:#374151;
+    font-weight:600;
+}
+
+.footer .divider{
+    width:60px;
+    height:2px;
+    background:var(--emas);
+    margin:10px auto;
+    border-radius:2px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<div class="header">
-    <img src="logo-unimus.png" alt="Logo UNIMUS">
-    <h1>Portal Verifikasi Data Akademik</h1>
-    <p>Sistem Validasi Dosen Universitas Muhammadiyah Semarang</p>
-</div>
-
-<!-- FORM -->
-<div class="card" id="formVerifikasi">
-    <label>Nama Dosen</label>
-    <input type="text" id="namaInput" placeholder="Masukkan nama dosen">
-    <button onclick="verifikasi()">Verifikasi Data Akademik</button>
-</div>
-
-<!-- HASIL -->
-<div class="card" id="hasilVerifikasi" style="display:none;">
-
-    <div class="status">
-        <h2>DATA DITEMUKAN</h2>
-        <div class="badge">✔ Terverifikasi</div>
+<!-- HALAMAN AWAL -->
+<div id="halamanAwal">
+    <div class="header">
+        <img src="logo-unimus.png" class="logo">
+        <div class="judul">Portal Verifikasi Data Akademik</div>
+        <div class="subjudul">Sistem Validasi Dosen Universitas Muhammadiyah Semarang</div>
+        <div class="garis"></div>
     </div>
 
-    <div class="hasil-wrapper">
+    <div class="card">
+        <div class="label-input">Nama Dosen</div>
+        <input type="text" id="keyword" placeholder="Masukkan nama dosen / NIDN / NIDK">
+        <button onclick="verifikasiData()">Verifikasi Data Akademik</button>
+    </div>
+</div>
 
-        <!-- DATA DOSEN -->
-        <div class="data-dosen">
-            <p><strong>Nama Lengkap :</strong> Muhammad Agil, S.M., M.M., M.Ling.</p>
-            <p><strong>Jabatan Akademik :</strong> Dosen Manajemen</p>
-            <p><strong>Fakultas :</strong> Fakultas Bisnis dan Ekonomi</p>
-            <p><strong>Status Kepegawaian :</strong> Dosen Kontrak</p>
-            <p><strong>NIDN/NIDK :</strong> 01261627119</p>
-            <p><strong>Masa Penugasan :</strong> 1 Maret 2026 – 1 Juni 2026</p>
-            <p><strong>Nomor SK :</strong> SK Pengangkatan No. 210/FBE/2026</p>
-            <p><strong>Tanggal Verifikasi :</strong> 23 Februari 2026</p>
-        </div>
+<!-- HALAMAN HASIL -->
+<div id="halamanHasil">
+    <div class="header-hasil">
+        <img src="logo-unimus.png">
+        <h2>Hasil Verifikasi Data Akademik</h2>
+    </div>
 
-        <!-- FOTO DOSEN -->
-        <div class="foto-dosen">
-            <img src="foto-dosen.jpg" alt="Foto Dosen">
-            <span>Foto Dosen</span>
-        </div>
+    <div class="kartu" id="hasilKonten"></div>
 
+    <div class="btn-kembali">
+        <button onclick="kembali()">Kembali</button>
     </div>
 </div>
 
 <!-- FOOTER -->
 <div class="footer">
-© 2026 Universitas Muhammadiyah Semarang — Portal Verifikasi Akademik  
-<br>
-Direktorat Sumber Daya Manusia & Kepegawaian
+    <div><strong>Universitas Muhammadiyah Semarang</strong></div>
+    <div class="divider"></div>
+    <div>Biro Sistem Informasi dan Kepegawaian</div>
+    <div>Sistem Verifikasi Data Akademik Dosen</div>
+    <div>© <span id="tahun"></span> Universitas Muhammadiyah Semarang. All rights reserved.</div>
 </div>
 
 <script>
-function verifikasi(){
-    var nama = document.getElementById("namaInput").value.toLowerCase();
+const database = [
+{
+    nama: "Muhammad Agil, S.M., M.M., M.Ling.",
+    keyword: ["agil","muhammad agil"],
+    jabatan: "Dosen Manajemen",
+    fakultas: "Fakultas Bisnis dan Ekonomi",
+    nidn: "01261627119",
+    kepegawaian: "Dosen Kontrak",
+    masaKerja: "1 Maret 2026 – 1 Juni 2026",
+    noSK: "210/FBE/2026",
+    foto: "foto-agil.jpg"
+}
+];
 
-    if(nama.includes("agil")){
-        document.getElementById("formVerifikasi").style.display="none";
-        document.getElementById("hasilVerifikasi").style.display="block";
-    }else{
-        alert("Data dosen tidak ditemukan");
+function formatTanggal(){
+    return new Date().toLocaleDateString("id-ID",{
+        day:"numeric",month:"long",year:"numeric"
+    });
+}
+
+function verifikasiData(){
+    const input = document.getElementById("keyword").value.toLowerCase().trim();
+
+    const data = database.find(d =>
+        d.keyword.some(k => k.includes(input))
+    );
+
+    document.getElementById("halamanAwal").style.display="none";
+    document.getElementById("halamanHasil").style.display="block";
+
+    if(data){
+        document.getElementById("hasilKonten").innerHTML = `
+            <div style="text-align:center">
+                <div class="status-title">DATA DITEMUKAN</div>
+                <div class="badge">Terverifikasi</div>
+            </div>
+
+            <div class="kartu-grid">
+
+                <div class="data">
+                    <div class="row">
+                        <div class="label">Nama Lengkap</div>
+                        <div class="separator">:</div>
+                        <div class="value">${data.nama}</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="label">Jabatan Akademik</div>
+                        <div class="separator">:</div>
+                        <div class="value">${data.jabatan}</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="label">Fakultas</div>
+                        <div class="separator">:</div>
+                        <div class="value">${data.fakultas}</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="label">Status Kepegawaian</div>
+                        <div class="separator">:</div>
+                        <div class="value">${data.kepegawaian}</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="label">NIDN/NIDK</div>
+                        <div class="separator">:</div>
+                        <div class="value">${data.nidn}</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="label">Masa Penugasan</div>
+                        <div class="separator">:</div>
+                        <div class="value">${data.masaKerja}</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="label">Nomor SK</div>
+                        <div class="separator">:</div>
+                        <div class="value">SK Pengangkatan No. ${data.noSK}</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="label">Tanggal Verifikasi</div>
+                        <div class="separator">:</div>
+                        <div class="value">${formatTanggal()}</div>
+                    </div>
+                </div>
+
+                <div class="foto">
+                    <img src="${data.foto}">
+                </div>
+
+            </div>
+        `;
+    } else {
+        document.getElementById("hasilKonten").innerHTML = `
+            <div style="text-align:center;color:#b42318;font-weight:600">
+                DATA TIDAK DITEMUKAN
+            </div>
+        `;
     }
 }
+
+function kembali(){
+    document.getElementById("halamanHasil").style.display="none";
+    document.getElementById("halamanAwal").style.display="block";
+}
+
+document.getElementById("tahun").textContent = new Date().getFullYear();
 </script>
 
 </body>
