@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hasil Verifikasi | UNIMUS</title>
+<title>Portal Verifikasi Dosen | UNIMUS</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -11,65 +11,111 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 
 body{
-background:linear-gradient(135deg,#f3f3f3,#e6e6e6);
-padding:40px 15px;
+background:linear-gradient(135deg,#f2f2f2,#e6e6e6);
+min-height:100vh;
 }
 
+/* CONTAINER */
 .wrapper{
-max-width:800px;
-margin:auto;
+max-width:850px;
+margin:40px auto;
 background:white;
 border-radius:20px;
-box-shadow:0 20px 60px rgba(0,0,0,0.08);
+box-shadow:0 25px 60px rgba(0,0,0,0.08);
 overflow:hidden;
 }
 
 /* HEADER */
 .header{
 background:#002b5c;
-padding:35px 20px;
 text-align:center;
+padding:40px 20px;
 }
 
 .header img{
-width:90px;
-margin-bottom:15px;
+width:130px; /* LOGO DIPERBESAR */
+margin-bottom:18px;
 }
 
 .header h1{
-font-size:22px;
-font-weight:600;
-color:#f5c542; /* SEMUA KUNING */
+color:#f5c542;
+font-size:24px;
 letter-spacing:1px;
+font-weight:600;
 }
 
-/* CONTENT */
-.content{
+/* SECTION */
+.section{
 padding:45px;
 }
 
-.title{
+.section h2{
 text-align:center;
-margin-bottom:35px;
-}
-
-.title h2{
 color:#002b5c;
-font-weight:600;
-margin-bottom:8px;
+margin-bottom:10px;
 }
 
-.title p{
+.section p{
+text-align:center;
 color:#777;
 font-size:14px;
+margin-bottom:30px;
 }
 
-/* CARD */
+/* INPUT */
+.input-group{
+margin-bottom:20px;
+}
+
+.input-group label{
+font-weight:500;
+font-size:14px;
+display:block;
+margin-bottom:8px;
+color:#444;
+}
+
+.input-group input{
+width:100%;
+padding:14px;
+border-radius:10px;
+border:1px solid #ccc;
+font-size:14px;
+transition:.3s;
+}
+
+.input-group input:focus{
+border-color:#caa12f;
+outline:none;
+box-shadow:0 0 0 3px rgba(202,161,47,0.15);
+}
+
+.btn{
+width:100%;
+padding:14px;
+border:none;
+border-radius:10px;
+background:linear-gradient(90deg,#caa12f,#f5c542);
+color:#002b5c;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+}
+
+.btn:hover{
+opacity:.9;
+}
+
+/* RESULT CARD */
+.result{
+display:none;
+}
+
 .profile-card{
 background:linear-gradient(135deg,#f9f9f9,#ececec);
+border-left:6px solid #f5c542;
 border-radius:15px;
 padding:35px;
-border-left:6px solid #f5c542; /* garis emas */
 }
 
 .profile-item{
@@ -89,19 +135,14 @@ color:#222;
 font-weight:500;
 }
 
-/* STATUS */
-.status{
-margin-top:25px;
-}
-
 .status-badge{
 display:inline-block;
+margin-top:15px;
 padding:10px 22px;
 background:linear-gradient(90deg,#caa12f,#f5c542);
 color:#002b5c;
 border-radius:30px;
 font-weight:600;
-font-size:14px;
 }
 
 /* FOOTER */
@@ -129,12 +170,24 @@ font-weight:600;
 <h1>UNIVERSITAS MUHAMMADIYAH SEMARANG</h1>
 </div>
 
-<div class="content">
+<!-- FORM PENCARIAN -->
+<div class="section" id="searchSection">
+<h2>Portal Verifikasi Data Dosen</h2>
+<p>Silakan masukkan NIDN / NIDK / Nama lengkap untuk melakukan pencarian data akademik resmi</p>
 
-<div class="title">
+<div class="input-group">
+<label>Pencarian Data (NIDN / NIDK / Nama Lengkap)</label>
+<input type="text" id="keyword" placeholder="Contoh: 00251276278 atau Muhammad Agil">
+</div>
+
+<button class="btn" onclick="verifikasi()">Verifikasi Data</button>
+</div>
+
+<!-- HASIL -->
+<div class="section result" id="resultSection">
+
 <h2>Hasil Verifikasi Data Dosen</h2>
 <p>Data berikut terverifikasi dalam sistem akademik resmi</p>
-</div>
 
 <div class="profile-card">
 
@@ -164,17 +217,11 @@ font-weight:600;
 </div>
 
 <div class="profile-item">
-<strong>Status Kepegawaian</strong>
-<span>Dosen Aktif</span>
-</div>
-
-<div class="status">
-<strong>Status Verifikasi :</strong><br><br>
+<strong>Status Verifikasi</strong>
 <span class="status-badge">VALID / AKTIF</span>
 </div>
 
 </div>
-
 </div>
 
 <div class="footer">
@@ -182,6 +229,21 @@ font-weight:600;
 </div>
 
 </div>
+
+<script>
+function verifikasi(){
+var input = document.getElementById("keyword").value.trim();
+
+if(input === ""){
+alert("Silakan masukkan NIDN / NIDK / Nama terlebih dahulu.");
+return;
+}
+
+document.getElementById("searchSection").style.display="none";
+document.getElementById("resultSection").style.display="block";
+window.scrollTo(0,0);
+}
+</script>
 
 </body>
 </html>
