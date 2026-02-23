@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal Verifikasi Dosen - UNIMUS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #f1f3f6, #e4e8ee);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Container */
+.wrapper {
+    width: 95%;
+    max-width: 900px;
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+/* Header */
+.header {
+    background: #003c8f;
+    padding: 25px 20px;
+    text-align: center;
+}
+
+.header img {
+    width: 80px;
+    margin-bottom: 10px;
+}
+
+.header h1 {
+    color: white;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.header span {
+    color: #fbc02d;
+    font-weight: 500;
+}
+
+/* Content */
+.content {
+    padding: 40px;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.title h2 {
+    color: #003c8f;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.title p {
+    color: #666;
+    font-size: 14px;
+}
+
+/* Form */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    transition: 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #003c8f;
+    outline: none;
+}
+
+.button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, #003c8f, #0057d9);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background: linear-gradient(90deg, #002c6d, #004bb5);
+}
+
+/* Result Card */
+.result-card {
+    margin-top: 30px;
+    padding: 25px;
+    border-radius: 12px;
+    background: #f9fbff;
+    border: 1px solid #e0e6f0;
+}
+
+.result-card h3 {
+    color: #003c8f;
+    margin-bottom: 15px;
+}
+
+.status-valid {
+    display: inline-block;
+    padding: 6px 14px;
+    background: #2e7d32;
+    color: white;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Footer */
+.footer {
+    background: #f1f1f1;
+    padding: 18px;
+    text-align: center;
+    font-size: 13px;
+    color: #666;
+}
+
+.footer span {
+    color: #003c8f;
+    font-weight: 500;
+}
+
+@media (max-width:600px){
+    .content {
+        padding: 25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <!-- HEADER -->
+    <div class="header">
+        <!-- Ganti src logo dengan logo UNIMUS -->
+        <img src="logo-unimus.png" alt="Logo UNIMUS">
+        <h1>UNIVERSITAS <span>MUHAMMADIYAH SEMARANG</span></h1>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <div class="title">
+            <h2>Portal Verifikasi Dosen</h2>
+            <p>Pastikan keaslian dan status aktif data akademik Anda</p>
+        </div>
+
+        <div class="form-group">
+            <label>NIDN / NIP Dosen</label>
+            <input type="text" placeholder="Masukkan NIDN / NIP Anda">
+        </div>
+
+        <div class="form-group">
+            <label>Kode Verifikasi Unik</label>
+            <input type="text" placeholder="Masukkan kode unik verifikasi">
+        </div>
+        <button class="button">Verifikasi Sekarang</button>
+
+        <!-- HASIL VERIFIKASI -->
+        <div class="result-card">
+            <h3>Hasil Verifikasi</h3>
+            <p><strong>Nama Dosen :</strong> Dr. Ahmad Fauzi, M.M</p>
+            <p><strong>NIDN/NIDK :</strong> 0612345678</p>
+            <p><strong>Program Studi :</strong> Manajemen</p>
+            <p><strong>Jabatan Akademik :</strong> Lektor</p>
+            <p><strong>Status :</strong> <span class="status-valid">VALID / AKTIF</span></p>
+       </div>
+
+     <div class="result-card">
+            <h3>Hasil Verifikasi</h3>
+            <p><strong>Nama Dosen :</strong> Muhammad Agil, M.M</p>
+            <p><strong>NIDN/NIDK :</strong> 00251276278</p>
+            <p><strong>Program Studi :</strong> Manajemen</p>
+            <p><strong>Jabatan Akademik :</strong> Dosen Kontrak</p>
+            <p><strong>Status :</strong> <span class="status-valid">VALID / AKTIF</span></p>
+     </div> 
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        © 2026 <span>Universitas Muhammadiyah Semarang</span>.  
+        Seluruh Hak Cipta Dilindungi.
+    </div>
+
+</div>
+
+</body>
+  </html>
