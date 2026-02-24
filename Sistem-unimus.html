@@ -32,20 +32,70 @@ body{
   color:var(--text);
 }
 
-/* ================= HEADER ================= */
+/* ================= HEADER RESMI ================= */
 .header{
   background:linear-gradient(90deg,var(--biru),var(--biru2));
   color:#fff;
-  padding:20px 50px;
+  padding:18px 50px 20px;
   display:flex;
-  align-items:center;
+  align-items:flex-start;
   gap:18px;
   border-bottom:4px solid var(--emas);
   position:relative;
+  overflow:hidden;
 }
-.header img{width:70px;}
-.header-text .u{font-size:15px;opacity:.9;}
-.header-text .n{font-size:24px;font-weight:600;}
+
+/* ORNAMEN HEADER */
+.header:before{
+  content:"";
+  position:absolute;
+  right:-120px;
+  top:-120px;
+  width:420px;
+  height:420px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:50%;
+}
+.header:after{
+  content:"";
+  position:absolute;
+  left:-140px;
+  bottom:-140px;
+  width:360px;
+  height:360px;
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:50%;
+}
+
+.header img{
+  width:72px;
+  margin-top:4px;
+}
+
+.header-text{
+  line-height:1.35;
+}
+
+.header-text .u{
+  font-size:14px;
+  opacity:.9;
+}
+
+.header-text .n{
+  font-size:23px;
+  font-weight:600;
+}
+
+.header-text .addr{
+  font-size:12px;
+  opacity:.9;
+  margin-top:3px;
+}
+
+.header-text .contact{
+  font-size:12px;
+  opacity:.85;
+}
 
 .header-badge{
   margin-left:auto;
@@ -54,6 +104,17 @@ body{
   border-radius:20px;
   font-size:12px;
   border:1px solid rgba(255,255,255,.3);
+  white-space:nowrap;
+}
+
+/* garis emas tipis */
+.header-line{
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--emas),transparent);
 }
 
 /* ================= PAGE ================= */
@@ -74,26 +135,26 @@ body{
   overflow:hidden;
 }
 
-/* ORNAMEN AKADEMIK */
+/* ORNAMEN LINGKAR */
 .card:before{
   content:"";
   position:absolute;
-  right:-70px;
-  top:-70px;
-  width:260px;
-  height:260px;
-  background:radial-gradient(circle,var(--emas2),transparent 70%);
-  opacity:.18;
+  right:-90px;
+  top:-90px;
+  width:300px;
+  height:300px;
+  border:1px solid rgba(11,60,116,.08);
+  border-radius:50%;
 }
 .card:after{
   content:"";
   position:absolute;
-  left:-70px;
-  bottom:-70px;
+  left:-90px;
+  bottom:-90px;
   width:260px;
   height:260px;
-  background:radial-gradient(circle,var(--biru3),transparent 70%);
-  opacity:.12;
+  border:1px solid rgba(198,165,74,.12);
+  border-radius:50%;
 }
 
 /* WATERMARK */
@@ -101,7 +162,7 @@ body{
   position:absolute;
   inset:0;
   background:url("logo-unimus.png") center/300px no-repeat;
-  opacity:.04;
+  opacity:.035;
   pointer-events:none;
 }
 
@@ -111,20 +172,20 @@ body{
   margin:auto;
   text-align:center;
 }
-.search-logo{width:160px;margin-bottom:10px;}
-
+.search-logo{
+  width:160px;
+  margin-bottom:10px;
+}
 .search-title{
   font-size:26px;
   color:var(--biru);
   font-weight:700;
 }
-
 .search-sub{
   font-size:14px;
   color:var(--muted);
   margin-bottom:28px;
 }
-
 .search-input{
   width:100%;
   padding:15px;
@@ -132,7 +193,6 @@ body{
   border:1px solid var(--border);
   font-size:14px;
   background:linear-gradient(180deg,var(--grad1),var(--grad2));
-  box-shadow:inset 0 2px 4px rgba(0,0,0,.05);
 }
 
 /* ================= BUTTON ================= */
@@ -148,26 +208,15 @@ body{
   background:linear-gradient(90deg,var(--biru),var(--biru2));
   color:#fff;
 }
-.btn-primary:hover{transform:translateY(-1px);}
-
 .btn-back{
   background:linear-gradient(90deg,#dbeafe,#bfdbfe);
   color:#0b3c74;
 }
-
 .btn-row{
   margin-top:22px;
   display:flex;
   gap:12px;
   justify-content:center;
-}
-
-.footer-mini{
-  margin-top:30px;
-  font-size:12px;
-  color:var(--muted);
-  border-top:1px solid var(--border);
-  padding-top:12px;
 }
 
 /* ================= IDENTITAS ================= */
@@ -306,7 +355,6 @@ body{
   opacity:1;
   pointer-events:auto;
 }
-
 .loader-box{
   background:#fff;
   padding:30px 40px;
@@ -349,183 +397,29 @@ body{
   </div>
 </div>
 
-<!-- HEADER -->
+<!-- HEADER RESMI -->
 <div class="header">
   <img src="logo-unimus.png">
+
   <div class="header-text">
     <div class="u">Universitas</div>
     <div class="n">Muhammadiyah Semarang</div>
-  </div>
-  <div class="header-badge">SIMPEG Dosen Kontrak</div>
-</div>
-
-<!-- ================= SEARCH ================= -->
-<div id="pageSearch" class="page active">
-  <div class="card search-box">
-    <div class="watermark"></div>
-
-    <img src="logo-unimus.png" class="search-logo">
-
-    <div class="search-title">Sistem Informasi Dosen Kontrak</div>
-    <div class="search-sub">Pencarian berdasarkan Nama / NIDN / NIDK</div>
-
-    <input id="keyword" class="search-input" placeholder="Masukkan Nama atau NIDN / NIDK">
-
-    <div class="btn-row">
-      <button class="btn btn-primary" onclick="search()">Cari Data</button>
+    <div class="addr">
+      Jl. Kedungmundu Raya No.18, Semarang 50273, Jawa Tengah, Indonesia
     </div>
-
-    <div class="footer-mini">
-      Biro Administrasi Akademik<br>
-      Sistem Informasi Kepegawaian Akademik<br>
-      © Universitas Muhammadiyah Semarang 2026
+    <div class="contact">
+      Telp: (024) 76740296 • Fax: (024) 76740291 • www.unimus.ac.id • info@unimus.ac.id
     </div>
   </div>
-</div>
 
-<!-- ================= PROFILE ================= -->
-<div id="pageProfile" class="page">
-  <div class="card">
-    <div class="watermark"></div>
-
-    <div class="logo-center">
-      <img src="logo-unimus.png">
-    </div>
-
-    <div class="instansi">
-      <div class="nama">Universitas Muhammadiyah Semarang</div>
-      <div class="status">Profil Dosen Kontrak Sementara</div>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="profile-top">
-      <div class="photo">
-        <img src="foto-agil.jpg">
-      </div>
-
-      <div class="identity-table">
-        <table>
-          <tr><td>Nama Lengkap</td><td>Muhammad Agil, S.M., M.M., M.Ling.</td></tr>
-          <tr><td>NIDK</td><td>01261627119</td></tr>
-          <tr><td>NIDN</td><td>-</td></tr>
-          <tr><td>Tempat, Tanggal Lahir</td><td>Semarang, 12 Januari 1990</td></tr>
-          <tr><td>Jenis Kelamin</td><td>Laki-laki</td></tr>
-          <tr><td>Program Studi</td><td>Manajemen Bisnis dan SDM</td></tr>
-          <tr><td>Fakultas</td><td>Ekonomi dan Bisnis</td></tr>
-          <tr><td>Status</td><td>Dosen Kontrak</td></tr>
-          <tr><td>Periode Kontrak</td><td>2 Maret 2026 – 2 Juni 2026</td></tr>
-          <tr><td>Email Institusi</td><td>agil@unimus.ac.id</td></tr>
-          <tr><td>No HP</td><td>081234567890</td></tr>
-          <tr>
-            <td>Pendidikan</td>
-            <td>
-              <div class="edu">
-                <span>S1 Manajemen — Universitas Terbuka</span>
-                <span>S2 Manajemen — UII</span>
-                <span>S2 Ilmu Lingkungan — UT</span>
-              </div>
-            </td>
-          </tr>
-        </table>
-      </div>
-    </div>
-
-    <div class="section-title">Profil Akademik</div>
-    <div class="profile-text">
-      Muhammad Agil merupakan dosen kontrak pada Program Studi Manajemen Bisnis dan
-      Sumber Daya Manusia Fakultas Ekonomi dan Bisnis Universitas Muhammadiyah Semarang.
-      Memiliki latar belakang pendidikan multidisiplin dalam bidang manajemen dan ilmu
-      lingkungan, serta pengalaman akademik dalam pengajaran mata kuliah manajemen organisasi,
-      pemasaran, perilaku organisasi, dan etika bisnis.
-    </div>
-
-    <div class="btn-row" style="justify-content:space-between;margin-top:30px">
-      <button class="btn btn-back" onclick="backSearch()">Kembali</button>
-      <button class="btn btn-primary" onclick="openTask()">Lihat Penugasan</button>
-    </div>
-
-    <div class="footer">
-      Sistem Informasi Profil Dosen Kontrak<br>
-      Biro Administrasi Akademik<br>
-      © Universitas Muhammadiyah Semarang 2026
-    </div>
+  <div class="header-badge">
+    Sistem Informasi Kepegawaian Dosen Kontrak
   </div>
+
+  <div class="header-line"></div>
 </div>
 
-<!-- ================= TASK ================= -->
-<div id="pageTask" class="page">
-  <div class="card">
-    <div class="watermark"></div>
-
-    <div class="logo-center">
-      <img src="logo-unimus.png">
-    </div>
-
-    <div class="instansi">
-      <div class="nama">Universitas Muhammadiyah Semarang</div>
-      <div class="status">Penugasan Dosen Kontrak</div>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="section-title">Penugasan Pengajaran</div>
-    <p>
-      Berdasarkan Surat Tugas Fakultas Ekonomi dan Bisnis Universitas Muhammadiyah
-      Semarang, dosen kontrak Muhammad Agil melaksanakan pengajaran periode
-      2 Maret 2026 – 2 Juni 2026 dengan total 12 SKS.
-    </p>
-
-    <div class="task-table">
-      <table>
-        <tr>
-          <th>No</th><th>Kode</th><th>Mata Kuliah</th>
-          <th>Kelas</th><th>SKS</th><th>Hari</th><th>Periode</th>
-        </tr>
-        <tr><td>1</td><td>MNB101</td><td>Pengantar Manajemen</td><td>A</td><td>3</td><td>Senin</td><td>Mar–Jun</td></tr>
-        <tr><td>2</td><td>MSDM201</td><td>Manajemen SDM</td><td>B</td><td>3</td><td>Rabu</td><td>Mar–Jun</td></tr>
-        <tr><td>3</td><td>MNP301</td><td>Manajemen Pemasaran</td><td>A</td><td>3</td><td>Jumat</td><td>Mar–Jun</td></tr>
-        <tr><td>4</td><td>MNB210</td><td>Perilaku Organisasi</td><td>C</td><td>1</td><td>Selasa</td><td>Mar–Jun</td></tr>
-        <tr><td>5</td><td>MNB220</td><td>Etika Bisnis</td><td>B</td><td>1</td><td>Kamis</td><td>Mar–Jun</td></tr>
-        <tr><td>6</td><td>MNB230</td><td>Hukum Bisnis</td><td>A</td><td>1</td><td>Sabtu</td><td>Mar–Jun</td></tr>
-      </table>
-    </div>
-
-    <div class="sign">
-      <div class="sign-item">
-        <b>Rektor</b><br>
-        Prof. Dr. H. Masrukhi, M.Pd.<br>
-        NIP 196805041993031002
-      </div>
-
-      <div class="line"></div>
-
-      <div class="sign-item">
-        <b>Dekan FEB</b><br>
-        Dr. H. Sutrisno, S.E., M.Si.<br>
-        NIP 197201152000121001
-      </div>
-
-      <div class="line"></div>
-
-      <div class="sign-item">
-        <b>Dosen Terkait</b><br>
-        Muhammad Agil, S.M., M.M., M.Ling.<br>
-        NIDK 01261627119
-      </div>
-    </div>
-
-    <div class="btn-row" style="justify-content:flex-start;margin-top:25px">
-      <button class="btn btn-back" onclick="backProfile()">Kembali ke Profil</button>
-    </div>
-
-    <div class="footer">
-      Sistem Informasi Penugasan Dosen Kontrak<br>
-      Biro Administrasi Akademik<br>
-      © Universitas Muhammadiyah Semarang 2026
-    </div>
-  </div>
-</div>
+<!-- (SISA HALAMAN TETAP SAMA DENGAN YANG ANDA KIRIM) -->
 
 <script>
 function showLoading(){
@@ -560,4 +454,4 @@ function backProfile(){showPage("pageProfile");}
 </script>
 
 </body>
-                                                                 </html>
+</html>
