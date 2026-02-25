@@ -3,277 +3,292 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Verifikasi Ijazah Nasional</title>
+
+<title>Verifikasi Ijazah - PDDikti</title>
 
 <style>
 
-/* ===============================
-WARNA NASIONAL
-=============================== */
+/* =========================
+   RESET
+========================= */
 
-:root{
---biru:#0b3c74;
---biru2:#082b55;
---emas:#c6a54a;
---bg:#f4f6fb;
---card:#ffffff;
---border:#e3e8f0;
---text:#1f2937;
---muted:#6b7280;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 
+/* =========================
+   BODY SIVIL BACKGROUND
+========================= */
 
-/* ===============================
-BODY
-=============================== */
-
-body{
-margin:0;
-font-family:Arial,Helvetica,sans-serif;
-background:var(--bg);
-color:var(--text);
+body {
+    background: #f4f6f9;
+    color: #1d2939;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 
+/* =========================
+   HEADER SIVIL
+========================= */
 
-/* ===============================
-TRANSISI HALAMAN NASIONAL
-=============================== */
-
-.page{
-opacity:0;
-transform:translateY(20px);
-transition:.4s;
-pointer-events:none;
-position:absolute;
-width:100%;
+.header {
+    background: #ffffff;
+    border-bottom: 1px solid #e4e7ec;
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
 }
 
-.page.active{
-opacity:1;
-transform:translateY(0);
-pointer-events:auto;
-position:relative;
+.header img {
+    height: 42px;
 }
 
-
-
-/* ===============================
-HEADER NASIONAL
-=============================== */
-
-.header{
-background:linear-gradient(90deg,var(--biru),var(--biru2));
-color:#fff;
-padding:14px 28px;
-display:flex;
-align-items:center;
-gap:14px;
+.header-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
 }
 
-.header img{
-width:46px;
+.header-text .title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1d2939;
 }
 
-.header-title{
-font-size:16px;
-font-weight:600;
-}
-
-.header-sub{
-font-size:12px;
-opacity:.9;
+.header-text .subtitle {
+    font-size: 12px;
+    color: #667085;
 }
 
 
+/* =========================
+   MAIN CENTER
+========================= */
 
-/* ===============================
-CONTAINER
-=============================== */
-
-.container{
-max-width:980px;
-margin:40px auto;
-padding:0 20px;
+.main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
 }
 
 
+/* =========================
+   CARD SIVIL
+========================= */
 
-/* ===============================
-CARD
-=============================== */
+.card {
+    background: #ffffff;
+    border: 1px solid #e4e7ec;
+    border-radius: 8px;
+    padding: 34px 34px 28px;
+    width: 100%;
+    max-width: 520px;
+    box-shadow: 0 1px 2px rgba(16,24,40,0.04);
+    text-align: center;
+}
 
-.card{
-background:var(--card);
-border-radius:8px;
-padding:28px;
-border:1px solid var(--border);
-box-shadow:0 4px 14px rgba(0,0,0,.06);
+.card h1 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.card p {
+    font-size: 14px;
+    color: #667085;
+    margin-bottom: 26px;
 }
 
 
+/* =========================
+   INPUT SIVIL
+========================= */
 
-/* ===============================
-FORM
-=============================== */
-
-.form-title{
-font-size:18px;
-font-weight:700;
-margin-bottom:6px;
+.input-group {
+    width: 100%;
 }
 
-.form-sub{
-font-size:13px;
-color:var(--muted);
-margin-bottom:20px;
+.input-group input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d0d5dd;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: 0.15s;
 }
 
-.input{
-width:100%;
-padding:12px;
-border-radius:4px;
-border:1px solid var(--border);
-margin-bottom:14px;
-font-size:14px;
-}
-
-.btn{
-background:var(--biru);
-color:#fff;
-border:none;
-padding:12px 18px;
-border-radius:4px;
-cursor:pointer;
-font-weight:600;
-}
-
-.btn:hover{
-background:var(--biru2);
+.input-group input:focus {
+    border-color: #2c6fb7;
 }
 
 
+/* =========================
+   BUTTON SIVIL
+========================= */
 
-/* ===============================
-LOADING NASIONAL
-=============================== */
-
-#loadingPage{
-position:fixed;
-inset:0;
-background:#ffffff;
-display:none;
-align-items:center;
-justify-content:center;
-flex-direction:column;
-z-index:999;
+.btn {
+    margin-top: 16px;
+    width: 100%;
+    background: #2c6fb7;
+    border: none;
+    color: white;
+    font-size: 14px;
+    padding: 11px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.15s;
 }
 
-.loader{
-width:42px;
-height:42px;
-border:4px solid #e5e7eb;
-border-top:4px solid var(--biru);
-border-radius:50%;
-animation:spin 1s linear infinite;
-}
-
-@keyframes spin{
-to{transform:rotate(360deg);}
-}
-
-.loading-text{
-margin-top:14px;
-font-size:14px;
-color:var(--biru);
-font-weight:600;
+.btn:hover {
+    background: #1f5fa3;
 }
 
 
+/* =========================
+   RESULT CARD
+========================= */
 
-/* ===============================
-RESULT
-=============================== */
-
-.result-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:16px;
+.result-card {
+    display: none;
+    background: #ffffff;
+    border: 1px solid #e4e7ec;
+    border-radius: 8px;
+    padding: 26px;
+    width: 100%;
+    max-width: 780px;
+    box-shadow: 0 1px 2px rgba(16,24,40,0.04);
 }
 
-.status{
-font-weight:700;
-padding:6px 14px;
-border-radius:20px;
-font-size:13px;
+.result-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 18px;
 }
 
-.valid{
-background:#e7f7ee;
-color:#15803d;
+.result-table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-.invalid{
-background:#fde8e8;
-color:#b91c1c;
+.result-table td {
+    padding: 9px 6px;
+    border-bottom: 1px solid #eef1f4;
+    font-size: 14px;
 }
 
-.result-table{
-width:100%;
-border-collapse:collapse;
-margin-top:14px;
+.result-table td:first-child {
+    width: 220px;
+    color: #667085;
 }
 
-.result-table td{
-border:1px solid var(--border);
-padding:10px;
-font-size:14px;
-}
-
-.result-table td:first-child{
-width:260px;
-background:#f9fafb;
-font-weight:600;
+.result-table td:last-child {
+    font-weight: 500;
 }
 
 
+/* =========================
+   ACTION BUTTONS
+========================= */
 
-/* ===============================
-BACK
-=============================== */
-
-.back-top{
-margin-bottom:10px;
-font-size:13px;
-color:var(--biru);
-cursor:pointer;
+.actions {
+    margin-top: 18px;
+    display: flex;
+    gap: 10px;
 }
 
-.back-top:hover{
-text-decoration:underline;
+.btn-outline {
+    flex: 1;
+    background: white;
+    border: 1px solid #2c6fb7;
+    color: #2c6fb7;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-outline:hover {
+    background: #f1f6ff;
 }
 
 
+/* =========================
+   FOOTER SIVIL
+========================= */
 
-/* ===============================
-RESPONSIVE
-=============================== */
-
-@media(max-width:768px){
-
-.container{
-margin:20px auto;
+.footer {
+    background: linear-gradient(90deg,#2c6fb7,#1f5fa3);
+    color: white;
+    text-align: center;
+    padding: 14px;
+    font-size: 13px;
 }
 
-.result-table td{
-font-size:13px;
+
+/* =========================
+   LOADING SIVIL
+========================= */
+
+.loading {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,0.85);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 14px;
+    z-index: 999;
 }
 
-.header{
-flex-direction:column;
-align-items:flex-start;
+.spinner {
+    width: 34px;
+    height: 34px;
+    border: 3px solid #e4e7ec;
+    border-top: 3px solid #2c6fb7;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading-text {
+    font-size: 14px;
+    color: #667085;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width:600px){
+
+.card {
+    padding: 26px 20px 22px;
+}
+
+.result-card {
+    padding: 18px;
+}
+
+.header {
+    padding: 10px 14px;
+}
+
+.header img {
+    height: 34px;
 }
 
 }
@@ -283,207 +298,201 @@ align-items:flex-start;
 
 <body>
 
-
-
-<!-- ===============================
-LOADING
-=============================== -->
-
-<div id="loadingPage">
-<img src="logo-kemdikbud.png" width="70">
-<div class="loader"></div>
-<div class="loading-text">Sistem Verifikasi Ijazah Nasional</div>
-</div>
-
-
-
-<!-- ===============================
-HEADER
-=============================== -->
-
+<!-- HEADER SIVIL -->
 <div class="header">
-<img src="logo-kemdikbud.png">
-<div>
-<div class="header-title">Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi</div>
-<div class="header-sub">Sistem Verifikasi Ijazah Nasional</div>
-</div>
-</div>
-
-
-
-<div class="container">
-
-
-
-<!-- ===============================
-FORM PAGE
-=============================== -->
-
-<section id="formPage" class="page active">
-
-<div class="card">
-
-<div class="form-title">Verifikasi Ijazah</div>
-<div class="form-sub">Masukkan nomor ijazah dan NIM/NISN</div>
-
-<input id="noIjazah" class="input" placeholder="Nomor Ijazah">
-<input id="nim" class="input" placeholder="NIM / NISN">
-
-<button class="btn" onclick="verifikasi()">Verifikasi</button>
-
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Logo_Kemdikbud.png">
+    <div class="header-text">
+        <div class="title">Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi</div>
+        <div class="subtitle">Pangkalan Data Pendidikan Tinggi (PDDikti)</div>
+    </div>
 </div>
 
-</section>
+
+<!-- MAIN -->
+<div class="main">
+
+    <!-- SEARCH CARD -->
+    <div class="card" id="searchCard">
+        <h1>Verifikasi Ijazah</h1>
+        <p>
+            Silakan masukkan nomor ijazah untuk melakukan verifikasi data ijazah
+            pada Pangkalan Data Pendidikan Tinggi (PDDikti)
+        </p>
+
+        <div class="input-group">
+            <input type="text" id="noIjazah" placeholder="Masukkan Nomor Ijazah">
+        </div>
+
+        <button class="btn" onclick="cariIjazah()">Cari</button>
+    </div>
 
 
+    <!-- RESULT -->
+    <div class="result-card" id="resultCard">
+        <div class="result-title">Hasil Verifikasi</div>
 
-<!-- ===============================
-RESULT PAGE
-=============================== -->
+        <table class="result-table">
+            <tr><td>Nomor Ijazah</td><td id="rNo"></td></tr>
+            <tr><td>Nama</td><td id="rNama"></td></tr>
+            <tr><td>Tempat, Tanggal Lahir</td><td id="rTTL"></td></tr>
+            <tr><td>Perguruan Tinggi</td><td id="rPT"></td></tr>
+            <tr><td>Program Studi</td><td id="rProdi"></td></tr>
+            <tr><td>Jenjang</td><td id="rJenjang"></td></tr>
+            <tr><td>Tahun Lulus</td><td id="rLulus"></td></tr>
+        </table>
 
-<section id="resultPage" class="page">
-
-<div class="card">
-
-<div class="back-top" onclick="kembali()">← Kembali ke Pencarian</div>
-
-<div class="result-header">
-<div style="font-weight:700">Hasil Verifikasi</div>
-<div id="statusBox" class="status">VALID</div>
-</div>
-
-<table class="result-table">
-<tr><td>Nama</td><td id="rNama"></td></tr>
-<tr><td>NIM</td><td id="rNim"></td></tr>
-<tr><td>Perguruan Tinggi</td><td id="rPt"></td></tr>
-<tr><td>Program Studi</td><td id="rProdi"></td></tr>
-<tr><td>Jenjang</td><td id="rJenjang"></td></tr>
-<tr><td>Nomor Ijazah</td><td id="rNo"></td></tr>
-<tr><td>Tahun Lulus</td><td id="rTahun"></td></tr>
-<tr><td>Tanggal Ijazah</td><td id="rTanggal"></td></tr>
-</table>
-
-</div>
-
-</section>
-
-
+        <div class="actions">
+            <button class="btn-outline" onclick="kembaliCari()">Kembali</button>
+        </div>
+    </div>
 
 </div>
 
 
+<!-- FOOTER -->
+<div class="footer">
+Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi Republik Indonesia
+</div>
 
+
+<!-- LOADING -->
+<div class="loading" id="loading">
+    <div class="spinner"></div>
+    <div class="loading-text">Memverifikasi data ijazah...</div>
+</div>
 <script>
 
-/* ===============================
-DATABASE IJAZAH
-=============================== */
+/* =====================================
+   DATABASE IJAZAH (SIMULASI PDDIKTI)
+   SETIAP DATA DIPISAH 2 BARIS
+===================================== */
 
-
-const ijazahDB=[
+const databaseIjazah = [
 
 {
-no:"UNIMUS-2024-001",
-nim:"B21121001",
-nama:"Muhammad Agil",
-pt:"Universitas Muhammadiyah Semarang",
-prodi:"Manajemen",
-jenjang:"S1",
-tahun:"2024",
-tanggal:"12 Agustus 2024"
+    no: "UNIMUS-2020-001234",
+    nama: "Ahmad Fauzi",
+    ttl: "Semarang, 12 Mei 1998",
+    pt: "Universitas Muhammadiyah Semarang",
+    prodi: "Teknik Informatika",
+    jenjang: "Sarjana",
+    lulus: "2020"
 },
 
 
 {
-no:"UNIMUS-2023-188",
-nim:"B20192033",
-nama:"Ahmad Syafii Ma'arif",
-pt:"Universitas Muhammadiyah Semarang",
-prodi:"Manajemen",
-jenjang:"S1",
-tahun:"2023",
-tanggal:"10 September 2023"
-}
+    no: "UGM-2019-009877",
+    nama: "Siti Rahmawati",
+    ttl: "Yogyakarta, 3 Januari 1997",
+    pt: "Universitas Gadjah Mada",
+    prodi: "Akuntansi",
+    jenjang: "Sarjana",
+    lulus: "2019"
+},
 
+
+{
+    no: "UNDIP-2018-004455",
+    nama: "Budi Santoso",
+    ttl: "Kudus, 21 Juli 1996",
+    pt: "Universitas Diponegoro",
+    prodi: "Hukum",
+    jenjang: "Sarjana",
+    lulus: "2018"
+},
+
+
+{
+    no: "ITS-2021-003211",
+    nama: "Rina Marlina",
+    ttl: "Surabaya, 9 September 1999",
+    pt: "Institut Teknologi Sepuluh Nopember",
+    prodi: "Teknik Sipil",
+    jenjang: "Sarjana",
+    lulus: "2021"
+}
 
 ];
 
 
 
-/* ===============================
-PAGE CONTROL
-=============================== */
+/* =====================================
+   FUNGSI CARI IJAZAH
+===================================== */
 
-function showPage(id){
+function cariIjazah() {
 
-document.querySelectorAll(".page").forEach(p=>{
-p.classList.remove("active");
+    const keyword = document.getElementById("noIjazah").value.trim();
+
+    if(keyword === ""){
+        alert("Nomor ijazah harus diisi");
+        return;
+    }
+
+    // tampilkan loading
+    document.getElementById("loading").style.display = "flex";
+
+    // simulasi proses server SIVIL
+    setTimeout(() => {
+
+        const hasil = databaseIjazah.find(d => d.no.toLowerCase() === keyword.toLowerCase());
+
+        document.getElementById("loading").style.display = "none";
+
+        if(!hasil){
+            alert("Data ijazah tidak ditemukan");
+            return;
+        }
+
+        // isi hasil
+        document.getElementById("rNo").textContent = hasil.no;
+        document.getElementById("rNama").textContent = hasil.nama;
+        document.getElementById("rTTL").textContent = hasil.ttl;
+        document.getElementById("rPT").textContent = hasil.pt;
+        document.getElementById("rProdi").textContent = hasil.prodi;
+        document.getElementById("rJenjang").textContent = hasil.jenjang;
+        document.getElementById("rLulus").textContent = hasil.lulus;
+
+        // transisi SIVIL
+        document.getElementById("searchCard").style.display = "none";
+        document.getElementById("resultCard").style.display = "block";
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+
+    }, 900);
+
+}
+
+
+
+/* =====================================
+   KEMBALI KE PENCARIAN
+===================================== */
+
+function kembaliCari(){
+
+    document.getElementById("resultCard").style.display = "none";
+    document.getElementById("searchCard").style.display = "block";
+
+    document.getElementById("noIjazah").value = "";
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+}
+
+
+
+/* =====================================
+   ENTER KEY SUPPORT (SIVIL BEHAVIOR)
+===================================== */
+
+document.getElementById("noIjazah")
+.addEventListener("keypress", function(e){
+    if(e.key === "Enter"){
+        cariIjazah();
+    }
 });
 
-document.getElementById(id).classList.add("active");
-
-}
-
-
-
-/* ===============================
-VERIFIKASI
-=============================== */
-
-function verifikasi(){
-
-const no=document.getElementById("noIjazah").value.trim();
-const nim=document.getElementById("nim").value.trim();
-
-if(!no||!nim){
-alert("Isi nomor ijazah dan NIM");
-return;
-}
-
-document.getElementById("loadingPage").style.display="flex";
-
-setTimeout(()=>{
-
-const data=ijazahDB.find(d=>d.no===no&&d.nim===nim);
-
-document.getElementById("loadingPage").style.display="none";
-
-showPage("resultPage");
-
-if(!data){
-
-document.getElementById("statusBox").className="status invalid";
-document.getElementById("statusBox").innerText="TIDAK VALID";
-return;
-}
-
-document.getElementById("statusBox").className="status valid";
-document.getElementById("statusBox").innerText="VALID";
-
-document.getElementById("rNama").innerText=data.nama;
-document.getElementById("rNim").innerText=data.nim;
-document.getElementById("rPt").innerText=data.pt;
-document.getElementById("rProdi").innerText=data.prodi;
-document.getElementById("rJenjang").innerText=data.jenjang;
-document.getElementById("rNo").innerText=data.no;
-document.getElementById("rTahun").innerText=data.tahun;
-document.getElementById("rTanggal").innerText=data.tanggal;
-
-},1000);
-
-}
-
-
-
-/* ===============================
-KEMBALI
-=============================== */
-
-function kembali(){
-showPage("formPage");
-}
-
 </script>
-
 </body>
 </html>
