@@ -11,7 +11,6 @@
 :root{
   --biru:#0b3c74;
   --biru2:#082b55;
-  --biru3:#123e7a;
   --emas:#c6a54a;
   --emas2:#e5c76b;
   --bg:#eef3f9;
@@ -19,8 +18,6 @@
   --border:#dbe2ec;
   --text:#1f2937;
   --muted:#6b7280;
-  --grad1:#f4f8ff;
-  --grad2:#eef4ff;
 }
 
 /* ================= BODY ================= */
@@ -41,36 +38,17 @@ body{
   gap:18px;
   border-bottom:5px solid var(--emas);
   position:relative;
-  overflow:hidden;
 }
 
-.header::after{
-  content:"";
-  position:absolute;
-  right:-120px;
-  top:-120px;
-  width:420px;
-  height:420px;
-  border-radius:50%;
-  border:2px solid rgba(255,255,255,.12);
-}
+.header img{width:100px;}
 
-.header::before{
-  content:"";
-  position:absolute;
-  left:-120px;
-  bottom:-120px;
-  width:420px;
-  height:420px;
-  border-radius:50%;
-  border:2px solid rgba(255,255,255,.08);
-}
-
-.header img{ width:100px; }
-
-.header-text .u{font-size:14px;opacity:.9;}
+.header-text .u{font-size:14px;}
 .header-text .n{font-size:26px;font-weight:700;}
-.header-info{font-size:13px;opacity:.9;margin-top:4px;}
+
+.header-info{
+  font-size:13px;
+  opacity:.9;
+}
 
 .header-badge{
   margin-left:auto;
@@ -78,7 +56,6 @@ body{
   padding:7px 16px;
   border-radius:22px;
   font-size:13px;
-  border:1px solid rgba(255,255,255,.3);
 }
 
 /* ================= PAGE ================= */
@@ -87,7 +64,7 @@ body{
 
 /* ================= CARD ================= */
 .card{
-  background:var(--card);
+  background:#fff;
   border-radius:18px;
   padding:45px;
   box-shadow:0 25px 60px rgba(0,0,0,.15);
@@ -96,35 +73,24 @@ body{
   overflow:hidden;
 }
 
-.card::before{
-  content:"";
-  position:absolute;
-  right:-90px;
-  top:-90px;
-  width:320px;
-  height:320px;
-  border-radius:50%;
-  border:2px dashed var(--emas2);
-  opacity:.25;
+/* ORNAMEN */
+.card-accent-top{
+position:absolute;top:0;left:0;width:100%;height:6px;
+background:linear-gradient(90deg,#c6a54a,#e5c76b,#c6a54a);
 }
-
-.card::after{
-  content:"";
-  position:absolute;
-  left:-90px;
-  bottom:-90px;
-  width:320px;
-  height:320px;
-  border-radius:50%;
-  border:2px dashed var(--biru3);
-  opacity:.18;
+.card-accent-corner{
+position:absolute;top:-40px;right:-40px;width:180px;height:180px;
+border:2px solid rgba(198,165,74,.25);border-radius:50%;
 }
-
-.watermark{
-  position:absolute;
-  inset:0;
-  background:url("logo-unimus.png") center/340px no-repeat;
-  opacity:.035;
+.card-accent-corner2{
+position:absolute;bottom:-50px;left:-50px;width:220px;height:220px;
+border:2px dashed rgba(11,60,116,.18);border-radius:50%;
+}
+.watermark-unimus{
+position:absolute;inset:0;
+background:url("logo-unimus.png") center/320px no-repeat;
+opacity:.035;
+pointer-events:none;
 }
 
 /* ================= SEARCH ================= */
@@ -134,32 +100,13 @@ body{
 .search-sub{font-size:14px;color:var(--muted);margin-bottom:28px;}
 
 .search-input{
-  width:100%;
-  padding:15px;
-  border-radius:12px;
-  border:1px solid var(--border);
-  font-size:14px;
-  background:linear-gradient(180deg,var(--grad1),var(--grad2));
+width:100%;padding:15px;border-radius:12px;
+border:1px solid var(--border);font-size:14px;
 }
 
-/* ================= BUTTON ================= */
-.btn{
-  padding:12px 24px;
-  border-radius:10px;
-  border:none;
-  cursor:pointer;
-  font-weight:600;
-}
-
-.btn-primary{
-  background:linear-gradient(90deg,var(--biru),var(--biru2));
-  color:#fff;
-}
-
-.btn-back{
-  background:linear-gradient(90deg,#dbeafe,#bfdbfe);
-  color:#0b3c74;
-}
+.btn{padding:12px 24px;border-radius:10px;border:none;cursor:pointer;font-weight:600;}
+.btn-primary{background:linear-gradient(90deg,var(--biru),var(--biru2));color:#fff;}
+.btn-back{background:#dbeafe;color:#0b3c74;}
 
 .btn-row{margin-top:22px;display:flex;gap:12px;justify-content:center;}
 
@@ -176,19 +123,16 @@ body{
 .profile-top{display:flex;gap:34px;}
 
 .photo{
-  width:215px;
-  height:270px;
-  border-radius:14px;
-  overflow:hidden;
-  border:5px solid #e6eaf1;
+width:215px;height:270px;border-radius:14px;
+overflow:hidden;border:5px solid #e6eaf1;
 }
 .photo img{width:100%;height:100%;object-fit:cover;}
 
 .identity-table table{width:100%;border-collapse:collapse;}
 .identity-table td{
-  border:1px solid var(--border);
-  padding:10px 14px;
-  font-size:14px;
+border:1px solid var(--border);
+padding:10px 14px;
+font-size:14px;
 }
 .identity-table tr:nth-child(odd){background:#f8fafc;}
 .identity-table td:first-child{width:230px;font-weight:600;color:var(--biru);}
@@ -196,21 +140,22 @@ body{
 /* ================= TASK ================= */
 .task-table table{width:100%;border-collapse:collapse;}
 .task-table th{
-  background:linear-gradient(90deg,var(--biru),var(--biru2));
-  color:#fff;
-  padding:10px;
+background:linear-gradient(90deg,var(--biru),var(--biru2));
+color:#fff;padding:10px;font-size:14px;
 }
-.task-table td{border:1px solid var(--border);padding:9px;}
+.task-table td{border:1px solid var(--border);padding:9px;font-size:14px;}
 .task-table tr:nth-child(even){background:#f1f6ff;}
+
+/* ================= TEXT ================= */
+.section-title{font-size:18px;font-weight:700;color:var(--biru);margin-top:28px;}
+.profile-text{font-size:14px;line-height:1.6;color:var(--text);margin-top:8px;}
+
+.footer{margin-top:35px;text-align:center;font-size:13px;color:var(--muted);
+border-top:1px solid var(--border);padding-top:12px;}
 
 .sign{margin-top:40px;border-top:2px solid var(--border);padding-top:20px;}
 .sign-item{margin-bottom:14px;}
 .line{height:1px;background:var(--border);margin:12px 0;}
-
-.section-title{font-size:18px;font-weight:700;color:var(--biru);margin-top:28px;}
-.profile-text{font-size:14px;line-height:1.6;margin-top:8px;}
-
-.footer{margin-top:35px;text-align:center;font-size:13px;color:var(--muted);border-top:1px solid var(--border);padding-top:12px;}
 
 </style>
 </head>
@@ -219,408 +164,302 @@ body{
 
 <!-- HEADER -->
 <div class="header">
-  <img src="logo-unimus.png">
-  <div class="header-text">
-    <div class="u">Universitas</div>
-    <div class="n">Muhammadiyah Semarang</div>
-    <div class="header-info">
-      Jl. Kedungmundu Raya No.18 Semarang
-    </div>
-  </div>
-  <div class="header-badge">Sistem Informasi Kepegawaian</div>
+<img src="logo-unimus.png">
+<div class="header-text">
+<div class="u">Universitas</div>
+<div class="n">Muhammadiyah Semarang</div>
+<div class="header-info">
+Jl. Kedungmundu Raya No.18 Semarang 50273 Jawa Tengah Indonesia<br>
+Telp (024) 76740296 • www.unimus.ac.id
+</div>
+</div>
+<div class="header-badge">Sistem Informasi Dosen Kontrak</div>
 </div>
 
 <!-- SEARCH -->
 <div id="pageSearch" class="page active">
-  <div class="card search-box">
-    <div class="watermark"></div>
-    <img src="logo-unimus.png" class="search-logo">
-    <div class="search-title">Sistem Informasi Dosen Kontrak</div>
-    <div class="search-sub">Pencarian Nama / NIDK</div>
+<div class="card search-box">
+<div class="card-accent-top"></div>
+<div class="card-accent-corner"></div>
+<div class="card-accent-corner2"></div>
+<div class="watermark-unimus"></div>
 
-    <input id="keyword" class="search-input"
-    placeholder="Masukkan Nama atau NIDK">
+<img src="logo-unimus.png" class="search-logo">
 
-    <div class="btn-row">
-      <button class="btn btn-primary" onclick="search()">Cari Data</button>
-    </div>
+<div class="search-title">Sistem Informasi Dosen Kontrak</div>
+<div class="search-sub">Pencarian berdasarkan Nama / NIDK</div>
 
-    <div class="footer">
-      © Universitas Muhammadiyah Semarang 2026
-    </div>
-  </div>
+<input id="keyword" class="search-input" placeholder="Masukkan Nama atau NIDK">
+
+<div class="btn-row">
+<button class="btn btn-primary" onclick="search()">Cari Data</button>
+</div>
+
+<div class="footer">
+Biro Administrasi Akademik<br>
+© Universitas Muhammadiyah Semarang 2026
+</div>
+</div>
 </div>
 
 <!-- PROFILE -->
 <div id="pageProfile" class="page">
-  <div class="card">
-    <div class="watermark"></div>
+<div class="card">
+<div class="card-accent-top"></div>
+<div class="card-accent-corner"></div>
+<div class="card-accent-corner2"></div>
+<div class="watermark-unimus"></div>
 
-    <div class="logo-center">
-      <img src="logo-unimus.png">
-    </div>
+<div class="logo-center"><img src="logo-unimus.png"></div>
 
-    <div class="instansi">
-      <div class="nama">Universitas Muhammadiyah Semarang</div>
-      <div class="status">Profil Dosen Kontrak</div>
-    </div>
+<div class="instansi">
+<div class="nama">Universitas Muhammadiyah Semarang</div>
+<div class="status">Profil Dosen Kontrak</div>
+</div>
 
-    <div class="divider"></div>
+<div class="divider"></div>
 
-    <div class="profile-top">
-      <div class="photo">
-        <img id="fotoDosen" src="">
-      </div>
+<div class="profile-top">
+<div class="photo"><img id="foto"></div>
 
-      <div class="identity-table">
-        <table id="tabelIdentitas"></table>
-      </div>
-    </div>
+<div class="identity-table">
+<table>
+<tr><td>Nama Lengkap</td><td id="nama"></td></tr>
+<tr><td>NIDK</td><td id="nidk"></td></tr>
+<tr><td>Tempat, Tanggal Lahir</td><td id="ttl"></td></tr>
+<tr><td>Jenis Kelamin</td><td id="jk"></td></tr>
+<tr><td>Program Studi</td><td id="prodi"></td></tr>
+<tr><td>Fakultas</td><td id="fak"></td></tr>
+<tr><td>Email</td><td id="email"></td></tr>
+<tr><td>Pendidikan S1</td><td id="s1"></td></tr>
+<tr><td>Pendidikan S2</td><td id="s2"></td></tr>
+</table>
+</div>
+</div>
 
-    <div class="section-title">Profil Singkat</div>
-    <div id="profilText" class="profile-text"></div>
+<div class="section-title">Profil Singkat</div>
+<div id="profil" class="profile-text"></div>
 
-    <div class="btn-row" style="justify-content:space-between;margin-top:30px">
-      <button class="btn btn-back" onclick="backSearch()">Kembali</button>
-      <button class="btn btn-primary" onclick="openTask()">Lihat Penugasan</button>
-    </div>
-  </div>
+<div class="section-title">Latar Belakang Akademik</div>
+<div id="latar" class="profile-text"></div>
+
+<div class="btn-row" style="justify-content:space-between;margin-top:30px">
+<button class="btn btn-back" onclick="backSearch()">Kembali</button>
+<button class="btn btn-primary" onclick="openTask()">Lihat Penugasan</button>
+</div>
+</div>
 </div>
 
 <!-- TASK -->
 <div id="pageTask" class="page">
-  <div class="card">
-    <div class="watermark"></div>
+<div class="card">
+<div class="card-accent-top"></div>
+<div class="card-accent-corner"></div>
+<div class="card-accent-corner2"></div>
+<div class="watermark-unimus"></div>
 
-    <div class="logo-center">
-      <img src="logo-unimus.png">
-    </div>
+<div class="logo-center"><img src="logo-unimus.png"></div>
 
-    <div class="instansi">
-      <div class="nama">Universitas Muhammadiyah Semarang</div>
-      <div class="status">Penugasan Dosen Kontrak</div>
-    </div>
+<div class="instansi">
+<div class="nama">Universitas Muhammadiyah Semarang</div>
+<div class="status">Penugasan Dosen Kontrak</div>
+</div>
 
-    <div class="divider"></div>
+<div class="divider"></div>
 
-    <div class="task-table">
-      <table id="tabelMatkul"></table>
-    </div>
+<div class="section-title">Penugasan Pengajaran</div>
+<div class="profile-text">
+Berdasarkan Surat Keputusan Dekan Fakultas, dosen kontrak melaksanakan
+pengajaran semester berjalan dengan beban minimal 10 SKS.
+</div>
 
-    <div class="sign">
-      <div class="sign-item">
-        <b>Dosen</b><br>
-        <span id="namaTTD"></span>
-      </div>
-    </div>
+<div class="task-table">
+<table>
+<tr>
+<th>No</th>
+<th>Kode</th>
+<th>Mata Kuliah</th>
+<th>SKS</th>
+</tr>
+<tr><td>1</td><td>MNB101</td><td>Pengantar Manajemen</td><td>2</td></tr>
+<tr><td>2</td><td>MSDM201</td><td>Manajemen SDM</td><td>2</td></tr>
+<tr><td>3</td><td>MNP301</td><td>Manajemen Pemasaran</td><td>2</td></tr>
+<tr><td>4</td><td>MNB210</td><td>Perilaku Organisasi</td><td>2</td></tr>
+<tr><td>5</td><td>MNB220</td><td>Etika Bisnis</td><td>2</td></tr>
+</table>
+</div>
 
-    <div class="btn-row">
-      <button class="btn btn-back" onclick="backProfile()">Kembali ke Profil</button>
-    </div>
-  </div>
+<div class="sign">
+<div class="sign-item">
+<b>Rektor</b><br>
+Prof. Dr. H. Masrukhi, M.Pd.
+</div>
+<div class="line"></div>
+<div class="sign-item">
+<b>Dekan Fakultas</b><br>
+Dr. H. Sutrisno, S.E., M.Si.
+</div>
+<div class="line"></div>
+<div class="sign-item">
+<b>Dosen</b><br>
+<span id="ttdNama"></span>
+</div>
+</div>
+
+<div class="btn-row">
+<button class="btn btn-back" onclick="backProfile()">Kembali ke Profil</button>
+</div>
+</div>
 </div>
 
 <script>
 
-<script>
-
-/* ================= DATABASE DOSEN KONTRAK ================= */
-const dosenDB=[
-
-{
+/* DATABASE DOSEN */
+const dosenDB={
+"agil":{
 nama:"Muhammad Agil, S.M., M.M., M.Ling.",
-nidk:"1261627119",
-nidn:"-",
-ttl:"Bojonegoro, 05 Juni 2002",
+nidk:"01261627119",
+ttl:"Semarang, 12 Januari 1990",
 jk:"Laki-laki",
-fakultas:"Fakultas Ekonomi dan Bisnis",
-prodi:"Manajemen Bisnis",
-status:"Dosen Kontrak",
-periode:"2 Maret 2026 – 2 Juni 2026",
+prodi:"Manajemen",
+fak:"Fakultas Ekonomi dan Bisnis",
 email:"agil@unimus.ac.id",
-s1:"Sarjana Manajemen (S.M.) – Universitas Terbuka",
-s2:"Magister Manajemen (M.M.) – Universitas Islam Indonesia",
-s22:"Magister Lingkungan (M.Ling.) – Universitas Terbuka",
-foto:"foto-agil.jpg",
-profil:"Dosen bidang Manajemen SDM, pemasaran, dan perilaku organisasi dengan latar belakang multidisiplin manajemen dan lingkungan. Memiliki kompetensi pengembangan organisasi, manajemen sumber daya manusia, serta etika bisnis.",
-matkul:[
-["MNB101","Pengantar Manajemen","A",3,"Senin"],
-["MSDM201","Manajemen SDM","B",3,"Rabu"],
-["MNP301","Manajemen Pemasaran","A",3,"Jumat"],
-["MNB210","Perilaku Organisasi","C",2,"Selasa"]
-]
+s1:"S1 Manajemen — Universitas Diponegoro",
+s2:"S2 Manajemen — Universitas Diponegoro; S2 Ilmu Lingkungan — Universitas Terbuka",
+profil:"Dosen kontrak bidang manajemen SDM dan organisasi.",
+latar:"Memiliki latar multidisiplin manajemen dan lingkungan dengan fokus SDM dan organisasi.",
+foto:"foto-agil.jpg"
 },
 
-{
+"syafii":{
 nama:"Ahmad Syafii Ma'arif, S.M., M.M.",
-nidk:"2001001",
-nidn:"-",
-ttl:"Semarang, 1985",
+nidk:"01261627120",
+ttl:"Pekalongan, 5 Mei 1988",
 jk:"Laki-laki",
-fakultas:"Fakultas Ekonomi dan Bisnis",
 prodi:"Manajemen",
-status:"Dosen Kontrak",
-periode:"2 Maret 2026 – 2 Juni 2026",
-email:"ahmad@unimus.ac.id",
-s1:"Sarjana Manajemen – Universitas Diponegoro",
-s2:"Magister Manajemen – Universitas Islam Indonesia",
-s22:"-",
-foto:"foto-default.jpg",
-profil:"Dosen manajemen strategik dan kewirausahaan dengan pengalaman akademik dan praktisi bisnis. Fokus pada pengembangan kewirausahaan mahasiswa dan manajemen inovasi.",
-matkul:[
-["MNJ201","Manajemen Strategik","A",3,"Senin"],
-["MNJ301","Kewirausahaan","B",3,"Rabu"],
-["MNJ210","Kepemimpinan","A",2,"Kamis"],
-["MNJ220","Perilaku Konsumen","B",2,"Jumat"]
-]
+fak:"Fakultas Ekonomi dan Bisnis",
+email:"syafii@unimus.ac.id",
+s1:"S1 Manajemen — Universitas Negeri Semarang",
+s2:"S2 Manajemen — Universitas Diponegoro",
+profil:"Dosen manajemen strategik.",
+latar:"Fokus kewirausahaan dan strategi bisnis.",
+foto:"foto-default.jpg"
 },
 
-{
-nama:"Dwi Agustina, S.E., M.M",
-nidk:"2001002",
-nidn:"-",
-ttl:"Demak, 1987",
+"dwi":{
+nama:"Dwi Agustina, S.E., M.M.",
+nidk:"01261627121",
+ttl:"Semarang, 3 Maret 1992",
 jk:"Perempuan",
-fakultas:"Fakultas Ekonomi dan Bisnis",
 prodi:"Manajemen",
-status:"Dosen Kontrak",
-periode:"2 Maret 2026 – 2 Juni 2026",
+fak:"Fakultas Ekonomi dan Bisnis",
 email:"dwi@unimus.ac.id",
-s1:"Sarjana Ekonomi – Universitas Negeri Semarang",
-s2:"Magister Manajemen – Universitas Diponegoro",
-s22:"-",
-foto:"foto-default.jpg",
-profil:"Dosen manajemen pemasaran dan perilaku konsumen dengan kompetensi riset pemasaran dan komunikasi bisnis. Aktif dalam pengembangan kurikulum pemasaran modern.",
-matkul:[
-["MNP201","Manajemen Pemasaran","A",3,"Selasa"],
-["MNP210","Perilaku Konsumen","B",3,"Kamis"],
-["MNP220","Komunikasi Bisnis","A",2,"Rabu"],
-["MNP230","Riset Pemasaran","A",2,"Jumat"]
-]
+s1:"S1 Ekonomi — Universitas Negeri Semarang",
+s2:"S2 Manajemen — Universitas Diponegoro",
+profil:"Dosen keuangan dan pemasaran.",
+latar:"Kompetensi analisis keuangan dan perilaku konsumen.",
+foto:"foto-default.jpg"
 },
 
-{
-nama:"Ningtiyas Anggraini Putri, S.H., M.H",
-nidk:"2001003",
-nidn:"-",
-ttl:"Semarang, 1990",
+"ning":{
+nama:"Ningtiyas Anggraini Putri, S.H., M.H.",
+nidk:"01261627122",
+ttl:"Kudus, 10 Oktober 1991",
 jk:"Perempuan",
-fakultas:"Fakultas Hukum",
 prodi:"Ilmu Hukum",
-status:"Dosen Kontrak",
-periode:"2 Maret 2026 – 2 Juni 2026",
-email:"ningtiyas@unimus.ac.id",
-s1:"Sarjana Hukum – Universitas Negeri Semarang",
-s2:"Magister Hukum – Universitas Diponegoro",
-s22:"-",
-foto:"foto-default.jpg",
-profil:"Dosen hukum bisnis dan hukum perdata dengan fokus kajian hukum kontrak dan etika bisnis. Aktif dalam penelitian hukum ekonomi dan regulasi usaha.",
-matkul:[
-["HKM201","Hukum Bisnis","A",3,"Senin"],
-["HKP210","Hukum Perdata","B",3,"Rabu"],
-["HKD220","Hukum Dagang","A",2,"Kamis"],
-["HKE230","Etika Profesi Hukum","A",2,"Jumat"]
-]
+fak:"Fakultas Hukum",
+email:"ning@unimus.ac.id",
+s1:"S1 Hukum — Universitas Islam Indonesia",
+s2:"S2 Hukum — Universitas Diponegoro",
+profil:"Dosen hukum bisnis.",
+latar:"Spesialis hukum kontrak dan bisnis.",
+foto:"foto-default.jpg"
 },
 
-{
-nama:"Ayuningsih Dwita Sari, S.Kom., M.Kom",
-nidk:"2001004",
-nidn:"-",
-ttl:"Kudus, 1992",
+"ayu":{
+nama:"Ayuningsih Dwita Sari, S.Kom., M.Kom.",
+nidk:"01261627123",
+ttl:"Semarang, 8 Agustus 1993",
 jk:"Perempuan",
-fakultas:"Fakultas Teknik dan Informatika",
 prodi:"Informatika",
-status:"Dosen Kontrak",
-periode:"2 Maret 2026 – 2 Juni 2026",
+fak:"Fakultas Teknologi Informasi",
 email:"ayu@unimus.ac.id",
-s1:"Sarjana Komputer – Universitas Dian Nuswantoro",
-s2:"Magister Komputer – Universitas Gadjah Mada",
-s22:"-",
-foto:"foto-default.jpg",
-profil:"Dosen sistem informasi dan pemrograman dengan kompetensi pengembangan aplikasi dan basis data. Aktif dalam penelitian teknologi informasi terapan.",
-matkul:[
-["IF201","Basis Data","A",3,"Selasa"],
-["IF210","Pemrograman Web","B",3,"Kamis"],
-["IF220","Sistem Informasi","A",2,"Rabu"],
-["IF230","Rekayasa Perangkat Lunak","A",2,"Jumat"]
-]
+s1:"S1 Informatika — Universitas Dian Nuswantoro",
+s2:"S2 Informatika — Universitas Diponegoro",
+profil:"Dosen sistem informasi.",
+latar:"Fokus basis data dan sistem akademik.",
+foto:"foto-default.jpg"
 },
 
-{
+"renaldi":{
 nama:"Renaldi Hutasoit, S.Pd., M.Pd.",
-nidk:"2001005",
-nidn:"-",
-ttl:"Medan, 1989",
+nidk:"01261627124",
+ttl:"Medan, 1 Januari 1990",
 jk:"Laki-laki",
-fakultas:"FKIP",
 prodi:"Pendidikan",
-status:"Dosen Kontrak",
-periode:"2 Maret 2026 – 2 Juni 2026",
+fak:"Fakultas FKIP",
 email:"renaldi@unimus.ac.id",
-s1:"Sarjana Pendidikan – Universitas Negeri Medan",
-s2:"Magister Pendidikan – Universitas Negeri Semarang",
-s22:"-",
-foto:"foto-default.jpg",
-profil:"Dosen pendidikan dan kurikulum dengan kompetensi strategi pembelajaran dan evaluasi pendidikan. Aktif dalam pelatihan guru dan pengembangan metode pembelajaran.",
-matkul:[
-["PDG201","Strategi Pembelajaran","A",3,"Senin"],
-["PDG210","Evaluasi Pendidikan","B",3,"Rabu"],
-["PDG220","Kurikulum","A",2,"Kamis"],
-["PDG230","Media Pembelajaran","A",2,"Jumat"]
-]
+s1:"S1 Pendidikan — Universitas Negeri Medan",
+s2:"S2 Pendidikan — Universitas Negeri Yogyakarta",
+profil:"Dosen metode pembelajaran.",
+latar:"Fokus evaluasi dan kurikulum.",
+foto:"foto-default.jpg"
 },
 
-{
+"mahmud":{
 nama:"Mahmud Yunus, S.Pd., Gr., M.Pd.",
-nidk:"2001006",
-nidn:"-",
-ttl:"Pekalongan, 1986",
+nidk:"01261627125",
+ttl:"Demak, 4 April 1989",
 jk:"Laki-laki",
-fakultas:"FKIP",
-prodi:"Pendidikan",
-status:"Dosen Kontrak",
-periode:"2 Maret 2026 – 2 Juni 2026",
+prodi:"Pendidikan Bahasa",
+fak:"Fakultas FKIP",
 email:"mahmud@unimus.ac.id",
-s1:"Sarjana Pendidikan – Universitas Negeri Semarang",
-s2:"Magister Pendidikan – Universitas Negeri Yogyakarta",
-s22:"-",
-foto:"foto-default.jpg",
-profil:"Dosen pedagogik dan manajemen pendidikan dengan pengalaman praktisi pendidikan. Fokus pada manajemen sekolah dan pengembangan profesional guru.",
-matkul:[
-["PDG301","Manajemen Pendidikan","A",3,"Selasa"],
-["PDG310","Administrasi Sekolah","B",3,"Kamis"],
-["PDG320","Supervisi Pendidikan","A",2,"Rabu"],
-["PDG330","Profesi Keguruan","A",2,"Jumat"]
-]
+s1:"S1 Pendidikan Bahasa — Universitas Negeri Semarang",
+s2:"S2 Pendidikan Bahasa — Universitas Negeri Yogyakarta",
+profil:"Dosen linguistik.",
+latar:"Fokus pengajaran bahasa.",
+foto:"foto-default.jpg"
 }
+};
 
-];
-
-/* ================= SEARCH ================= */
-function search(){
-const key=document.getElementById("keyword").value.toLowerCase();
-const d=dosenDB.find(x=>x.nama.toLowerCase().includes(key)||x.nidk.includes(key));
-if(!d){alert("Data tidak ditemukan");return;}
-
-window.current=d;
-
-/* FOTO */
-document.getElementById("fotoDosen").src=d.foto;
-
-/* IDENTITAS LENGKAP */
-document.getElementById("tabelIdentitas").innerHTML=`
-<tr><td>Nama Lengkap</td><td>${d.nama}</td></tr>
-<tr><td>NIDK</td><td>${d.nidk}</td></tr>
-<tr><td>NIDN</td><td>${d.nidn}</td></tr>
-<tr><td>Tempat, Tanggal Lahir</td><td>${d.ttl}</td></tr>
-<tr><td>Jenis Kelamin</td><td>${d.jk}</td></tr>
-<tr><td>Program Studi</td><td>${d.prodi}</td></tr>
-<tr><td>Fakultas</td><td>${d.fakultas}</td></tr>
-<tr><td>Status</td><td>${d.status}</td></tr>
-<tr><td>Periode Kontrak</td><td>${d.periode}</td></tr>
-<tr><td>Email Institusi</td><td>${d.email}</td></tr>
-<tr><td>Pendidikan S1</td><td>${d.s1}</td></tr>
-<tr><td>Pendidikan S2</td><td>${d.s2}</td></tr>
-<tr><td>Pendidikan S2</td><td>${d.s22}</td></tr>
-`;
-
-/* PROFIL */
-document.getElementById("profilText").innerText=d.profil;
-
-/* PAGE */
-document.getElementById("pageSearch").classList.remove("active");
-document.getElementById("pageProfile").classList.add("active");
-}
-
-/* ================= TASK ================= */
-function openTask(){
-const d=window.current;
-
-let rows=`<tr>
-<th>No</th><th>Kode</th><th>Mata Kuliah</th>
-<th>Kelas</th><th>SKS</th><th>Hari</th></tr>`;
-
-d.matkul.forEach((m,i)=>{
-rows+=`<tr>
-<td>${i+1}</td>
-<td>${m[0]}</td>
-<td>${m[1]}</td>
-<td>${m[2]}</td>
-<td>${m[3]}</td>
-<td>${m[4]}</td>
-</tr>`;
-});
-
-document.getElementById("tabelMatkul").innerHTML=rows;
-document.getElementById("namaTTD").innerText=d.nama;
-
-document.getElementById("pageProfile").classList.remove("active");
-document.getElementById("pageTask").classList.add("active");
-}
-
-function backSearch(){
-document.getElementById("pageProfile").classList.remove("active");
-document.getElementById("pageSearch").classList.add("active");
-}
-
-function backProfile(){
-document.getElementById("pageTask").classList.remove("active");
-document.getElementById("pageProfile").classList.add("active");
-}
-
-</script>
-}
-
-];
+let currentDosen=null;
 
 /* SEARCH */
 function search(){
-const key=document.getElementById("keyword").value.toLowerCase();
-const d=dosenDB.find(x=>x.nama.toLowerCase().includes(key)||x.nidk.includes(key));
-if(!d){alert("Data tidak ditemukan");return;}
+let k=document.getElementById("keyword").value.toLowerCase().trim();
+if(!k){alert("Masukkan keyword");return;}
 
-window.current=d;
-
-document.getElementById("fotoDosen").src=d.foto;
-
-document.getElementById("tabelIdentitas").innerHTML=`
-<tr><td>Nama</td><td>${d.nama}</td></tr>
-<tr><td>NIDK</td><td>${d.nidk}</td></tr>
-<tr><td>Fakultas</td><td>${d.fakultas}</td></tr>
-<tr><td>Prodi</td><td>${d.prodi}</td></tr>
-<tr><td>TTL</td><td>${d.ttl}</td></tr>
-<tr><td>Email</td><td>${d.email}</td></tr>
-`;
-
-document.getElementById("profilText").innerText=d.profil;
-
-document.getElementById("pageSearch").classList.remove("active");
-document.getElementById("pageProfile").classList.add("active");
+for(let key in dosenDB){
+let d=dosenDB[key];
+if(d.nama.toLowerCase().includes(k)||d.nidk.includes(k)){
+showProfile(d);
+return;
+}
+}
+alert("Data dosen tidak ditemukan");
 }
 
-/* TASK */
+function showProfile(d){
+currentDosen=d;
+document.getElementById("pageSearch").classList.remove("active");
+document.getElementById("pageProfile").classList.add("active");
+
+document.getElementById("foto").src=d.foto;
+document.getElementById("nama").innerText=d.nama;
+document.getElementById("nidk").innerText=d.nidk;
+document.getElementById("ttl").innerText=d.ttl;
+document.getElementById("jk").innerText=d.jk;
+document.getElementById("prodi").innerText=d.prodi;
+document.getElementById("fak").innerText=d.fak;
+document.getElementById("email").innerText=d.email;
+document.getElementById("s1").innerText=d.s1;
+document.getElementById("s2").innerText=d.s2;
+document.getElementById("profil").innerText=d.profil;
+document.getElementById("latar").innerText=d.latar;
+document.getElementById("ttdNama").innerText=d.nama;
+}
+
 function openTask(){
-const d=window.current;
-
-let rows=`<tr>
-<th>No</th><th>Kode</th><th>Mata Kuliah</th>
-<th>Kelas</th><th>SKS</th><th>Hari</th></tr>`;
-
-d.matkul.forEach((m,i)=>{
-rows+=`<tr>
-<td>${i+1}</td>
-<td>${m[0]}</td>
-<td>${m[1]}</td>
-<td>${m[2]}</td>
-<td>${m[3]}</td>
-<td>${m[4]}</td>
-</tr>`;
-});
-
-document.getElementById("tabelMatkul").innerHTML=rows;
-document.getElementById("namaTTD").innerText=d.nama;
-
 document.getElementById("pageProfile").classList.remove("active");
 document.getElementById("pageTask").classList.add("active");
 }
@@ -636,5 +475,6 @@ document.getElementById("pageProfile").classList.add("active");
 }
 
 </script>
+
 </body>
-      </html>
+  </html>
