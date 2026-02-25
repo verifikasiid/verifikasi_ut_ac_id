@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIVEL - Sistem Informasi Verifikasi Ijazah Elektronik</title>
+
+<style>
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #eef2f7;
+    margin: 0;
+}
+
+header {
+    background: #0f172a;
+    color: white;
+    padding: 25px;
+    text-align: center;
+}
+
+header h2 {
+    margin: 0;
+}
+
+.container {
+    max-width: 750px;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #0f172a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1e293b;
+}
+
+.result {
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.valid {
+    background: #ecfdf5;
+    border-left: 6px solid #10b981;
+}
+
+.invalid {
+    background: #fef2f2;
+    border-left: 6px solid #ef4444;
+}
+
+.data-row {
+    margin-bottom: 6px;
+}
+
+footer {
+    text-align: center;
+    margin: 40px;
+    font-size: 12px;
+    color: gray;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h2>SIVEL</h2>
+    <p>Sistem Informasi Verifikasi Ijazah Elektronik Berbasis Web</p>
+</header>
+
+<div class="container">
+    <h3>Verifikasi Keabsahan Ijazah</h3>
+    <input type="text" id="nomor" placeholder="Masukkan Nomor Ijazah / Nomor Seri">
+    <button onclick="verifikasi()">Verifikasi Data</button>
+
+    <div id="hasil"></div>
+</div>
+
+<footer>
+© 2026 SIVEL - Sistem Verifikasi Ijazah Elektronik (Simulasi Akademik)
+</footer>
+
+<script>
+
+// Database simulasi lebih lengkap
+const database = [
+{
+    nomorIjazah: "IJZ-UNM-2026-0001",
+    nomorSeri: "NS-2026-778899",
+    nim: "202201001",
+    nama: "Ahmad Fauzi",
+    ttl: "Semarang, 12 Januari 2003",
+    prodi: "Teknik Informatika",
+    jenjang: "Strata 1 (S1)",
+    fakultas: "Fakultas Teknik",
+    ipk: "3.85",
+    tahunLulus: "2026",
+    tanggalTerbit: "15 Agustus 2026",
+    status: "VALID"
+},
+{
+    nomorIjazah: "IJZ-UNM-2026-0002",
+    nomorSeri: "NS-2026-112233",
+    nim: "202201002",
+    nama: "Siti Rahmawati",
+    ttl: "Kendal, 03 Maret 2003",
+    prodi: "Sistem Informasi",
+    jenjang: "Strata 1 (S1)",
+    fakultas: "Fakultas Ilmu Komputer",
+    ipk: "3.78",
+    tahunLulus: "2026",
+    tanggalTerbit: "15 Agustus 2026",
+    status: "VALID"
+}
+];
+
+function verifikasi() {
+    const input = document.getElementById("nomor").value.trim();
+    const hasil = document.getElementById("hasil");
+
+    const data = database.find(item =>
+        item.nomorIjazah === input || item.nomorSeri === input
+    );
+
+    if (data) {
+        const kodeVerifikasi = "VER-" + Math.floor(100000 + Math.random() * 900000);
+
+        hasil.innerHTML = `
+        <div class="result valid">
+            <h3>✅ IJAZAH TERVALIDASI</h3>
+            <div class="data-row"><strong>Nomor Ijazah:</strong> ${data.nomorIjazah}</div>
+            <div class="data-row"><strong>Nomor Seri Nasional:</strong> ${data.nomorSeri}</div>
+            <div class="data-row"><strong>NIM:</strong> ${data.nim}</div>
+            <div class="data-row"><strong>Nama Lengkap:</strong> ${data.nama}</div>
+            <div class="data-row"><strong>Tempat, Tanggal Lahir:</strong> ${data.ttl}</div>
+            <div class="data-row"><strong>Program Studi:</strong> ${data.prodi}</div>
+            <div class="data-row"><strong>Jenjang:</strong> ${data.jenjang}</div>
+            <div class="data-row"><strong>Fakultas:</strong> ${data.fakultas}</div>
+            <div class="data-row"><strong>IPK:</strong> ${data.ipk}</div>
+            <div class="data-row"><strong>Tahun Lulus:</strong> ${data.tahunLulus}</div>
+            <div class="data-row"><strong>Tanggal Terbit:</strong> ${data.tanggalTerbit}</div>
+            <div class="data-row"><strong>Status Keabsahan:</strong> ${data.status}</div>
+            <hr>
+            <div class="data-row"><strong>Kode Verifikasi:</strong> ${kodeVerifikasi}</div>
+            <div class="data-row"><strong>Tanggal Verifikasi:</strong> ${new Date().toLocaleDateString()}</div>
+        </div>
+        `;
+    } else {
+        hasil.innerHTML = `
+        <div class="result invalid">
+            <h3>❌ DATA TIDAK DITEMUKAN</h3>
+            Nomor ijazah atau nomor seri tidak terdaftar dalam sistem.
+        </div>
+        `;
+    }
+}
+
+</script>
+
+</body>
+</html>
