@@ -3,180 +3,358 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SIVEL - Sistem Informasi Verifikasi Ijazah Elektronik</title>
+<title>SIVIL UNIMUS - Verifikasi Ijazah</title>
 
 <style>
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background: #eef2f7;
-    margin: 0;
+:root{
+--biru:#0b3c74;
+--biru2:#082b55;
+--emas:#c6a54a;
+--bg:#eef3f9;
+--card:#ffffff;
+--border:#dbe2ec;
+--text:#1f2937;
+--muted:#6b7280;
 }
 
-header {
-    background: #0f172a;
-    color: white;
-    padding: 25px;
-    text-align: center;
+body{
+margin:0;
+font-family:"Segoe UI",Arial;
+background:linear-gradient(180deg,var(--bg),#e8eef7);
+color:var(--text);
 }
 
-header h2 {
-    margin: 0;
+/* LOADING */
+#loading{
+position:fixed;inset:0;
+background:white;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+z-index:9999;
+opacity:0;
+pointer-events:none;
+transition:.3s;
+}
+#loading.active{opacity:1;pointer-events:auto;}
+#loading img{width:110px;margin-bottom:15px;}
+.spinner{
+width:50px;height:50px;
+border:5px solid #e3e8f0;
+border-top:5px solid var(--biru);
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* HEADER */
+.header{
+background:linear-gradient(90deg,var(--biru),var(--biru2));
+color:white;
+padding:18px 40px;
+display:flex;
+align-items:center;
+gap:15px;
+border-bottom:5px solid var(--emas);
+}
+.header img{width:90px;}
+.header-title{
+font-size:20px;
+font-weight:700;
+}
+.header-sub{
+font-size:13px;
+opacity:.9;
 }
 
-.container {
-    max-width: 750px;
-    margin: 40px auto;
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+/* PAGE */
+.page{display:none;padding:40px;}
+.page.active{display:block;}
+
+/* CARD */
+.card{
+background:var(--card);
+border-radius:16px;
+padding:35px;
+max-width:850px;
+margin:auto;
+box-shadow:0 20px 50px rgba(0,0,0,.12);
+border-top:6px solid var(--emas);
+position:relative;
+overflow:hidden;
 }
 
-input {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
+.watermark{
+position:absolute;
+inset:0;
+background:url('logo-unimus.png') center/260px no-repeat;
+opacity:.04;
+pointer-events:none;
 }
 
-button {
-    width: 100%;
-    padding: 12px;
-    background: #0f172a;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
+/* SEARCH */
+.search-title{
+font-size:24px;
+font-weight:700;
+color:var(--biru);
+text-align:center;
+}
+.search-sub{
+text-align:center;
+font-size:14px;
+color:var(--muted);
+margin-bottom:25px;
+}
+.input{
+width:100%;
+padding:14px;
+border-radius:10px;
+border:1px solid var(--border);
+font-size:14px;
 }
 
-button:hover {
-    background: #1e293b;
+.btn{
+padding:12px 24px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-weight:600;
+}
+.btn-primary{
+background:linear-gradient(90deg,var(--biru),var(--biru2));
+color:white;
+}
+.btn-back{
+background:#e0ecff;
+color:var(--biru);
+}
+.btn-row{
+margin-top:22px;
+display:flex;
+gap:12px;
+justify-content:center;
 }
 
-.result {
-    margin-top: 25px;
-    padding: 20px;
-    border-radius: 8px;
+/* RESULT */
+.title-center{
+text-align:center;
+font-size:20px;
+font-weight:700;
+color:var(--biru);
+margin-bottom:5px;
+}
+.status-valid{
+text-align:center;
+color:#0f7b33;
+font-weight:700;
+margin-bottom:20px;
+}
+.data-table table{
+width:100%;
+border-collapse:collapse;
+}
+.data-table td{
+border:1px solid var(--border);
+padding:10px;
+font-size:14px;
+}
+.data-table td:first-child{
+width:240px;
+font-weight:600;
+color:var(--biru);
+background:#f8fafc;
 }
 
-.valid {
-    background: #ecfdf5;
-    border-left: 6px solid #10b981;
+.qr{
+text-align:center;
+margin-top:20px;
+}
+.qr img{width:120px;}
+
+.sign{
+margin-top:30px;
+border-top:1px solid var(--border);
+padding-top:15px;
+font-size:14px;
 }
 
-.invalid {
-    background: #fef2f2;
-    border-left: 6px solid #ef4444;
-}
-
-.data-row {
-    margin-bottom: 6px;
-}
-
-footer {
-    text-align: center;
-    margin: 40px;
-    font-size: 12px;
-    color: gray;
+@media(max-width:768px){
+.page{padding:20px;}
+.card{padding:25px;}
+.header{flex-direction:column;align-items:flex-start;}
 }
 </style>
 </head>
 
 <body>
 
-<header>
-    <h2>SIVEL</h2>
-    <p>Sistem Informasi Verifikasi Ijazah Elektronik Berbasis Web</p>
-</header>
-
-<div class="container">
-    <h3>Verifikasi Keabsahan Ijazah</h3>
-    <input type="text" id="nomor" placeholder="Masukkan Nomor Ijazah / Nomor Seri">
-    <button onclick="verifikasi()">Verifikasi Data</button>
-
-    <div id="hasil"></div>
+<!-- LOADING -->
+<div id="loading">
+<img src="logo-unimus.png">
+<div class="spinner"></div>
+<div style="margin-top:10px;font-weight:600;color:#0b3c74">
+Sistem Verifikasi Ijazah<br>
+Universitas Muhammadiyah Semarang
+</div>
 </div>
 
-<footer>
-© 2026 SIVEL - Sistem Verifikasi Ijazah Elektronik (Simulasi Akademik)
-</footer>
+<!-- HEADER -->
+<div class="header">
+<img src="logo-unimus.png">
+<div>
+<div class="header-title">SIVIL UNIMUS</div>
+<div class="header-sub">
+Sistem Verifikasi Ijazah Elektronik<br>
+Universitas Muhammadiyah Semarang
+</div>
+</div>
+</div>
+
+<!-- SEARCH PAGE -->
+<div id="pageSearch" class="page active">
+<div class="card">
+<div class="watermark"></div>
+
+<div class="search-title">Verifikasi Keaslian Ijazah</div>
+<div class="search-sub">
+Masukkan Nomor Ijazah atau Nama Lulusan
+</div>
+
+<input id="keyword" class="input" placeholder="Nomor Ijazah / Nama">
+
+<div class="btn-row">
+<button class="btn btn-primary" onclick="search()">Verifikasi</button>
+</div>
+
+</div>
+</div>
+<!-- RESULT PAGE -->
+<div id="pageResult" class="page">
+<div class="card">
+<div class="watermark"></div>
+
+<div class="title-center">Hasil Verifikasi Ijazah</div>
+<div class="status-valid">VALID ✓ Terdaftar pada Pangkalan Data Pendidikan Tinggi</div>
+
+<div class="data-table">
+<table>
+<tr><td>Nama</td><td id="r_nama"></td></tr>
+<tr><td>Nomor Ijazah</td><td id="r_no"></td></tr>
+<tr><td>NIK</td><td id="r_nik"></td></tr>
+<tr><td>Tempat, Tanggal Lahir</td><td id="r_ttl"></td></tr>
+<tr><td>Program Studi</td><td id="r_prodi"></td></tr>
+<tr><td>Fakultas</td><td id="r_fakultas"></td></tr>
+<tr><td>Jenjang</td><td id="r_jenjang"></td></tr>
+<tr><td>Tahun Lulus</td><td id="r_lulus"></td></tr>
+<tr><td>Nomor SK Ijazah</td><td id="r_sk"></td></tr>
+<tr><td>Tanggal Ijazah</td><td id="r_tgl"></td></tr>
+</table>
+</div>
+
+<div class="qr">
+<img src="qr.png">
+<div style="font-size:12px;color:#6b7280">
+Scan untuk verifikasi online
+</div>
+</div>
+
+<div class="sign">
+<div><b>Pejabat Penandatangan</b></div>
+<div>Rektor Universitas Muhammadiyah Semarang</div>
+<br>
+<div style="font-weight:700">
+Prof. Dr. H. Masrukhi, M.Pd.
+</div>
+<div>NIP. 196804041993031002</div>
+</div>
+
+<div class="btn-row">
+<button class="btn btn-back" onclick="back()">Kembali</button>
+</div>
+
+</div>
+</div>
 
 <script>
-
-// Database simulasi lebih lengkap
-const database = [
+/* DATABASE IJAZAH */
+const db = [
 {
-    nomorIjazah: "IJZ-UNM-2026-0001",
-    nomorSeri: "NS-2026-778899",
-    nim: "202201001",
-    nama: "Ahmad Fauzi",
-    ttl: "Semarang, 12 Januari 2003",
-    prodi: "Teknik Informatika",
-    jenjang: "Strata 1 (S1)",
-    fakultas: "Fakultas Teknik",
-    ipk: "3.85",
-    tahunLulus: "2026",
-    tanggalTerbit: "15 Agustus 2026",
-    status: "VALID"
+nama:"Ahmad Fauzan",
+no:"UNM-2020-000123",
+nik:"3374010101990001",
+ttl:"Semarang, 01 Januari 1999",
+prodi:"S1 Teknik Informatika",
+fakultas:"Fakultas Teknik",
+jenjang:"Sarjana",
+lulus:"2020",
+sk:"123/SK/FT/2020",
+tgl:"20 Agustus 2020"
 },
 {
-    nomorIjazah: "IJZ-UNM-2026-0002",
-    nomorSeri: "NS-2026-112233",
-    nim: "202201002",
-    nama: "Siti Rahmawati",
-    ttl: "Kendal, 03 Maret 2003",
-    prodi: "Sistem Informasi",
-    jenjang: "Strata 1 (S1)",
-    fakultas: "Fakultas Ilmu Komputer",
-    ipk: "3.78",
-    tahunLulus: "2026",
-    tanggalTerbit: "15 Agustus 2026",
-    status: "VALID"
+nama:"Siti Rahmawati",
+no:"UNM-2021-000456",
+nik:"3374010202990002",
+ttl:"Kendal, 02 Februari 1999",
+prodi:"S1 Keperawatan",
+fakultas:"Fakultas Ilmu Keperawatan",
+jenjang:"Sarjana",
+lulus:"2021",
+sk:"456/SK/FIK/2021",
+tgl:"18 September 2021"
 }
 ];
 
-function verifikasi() {
-    const input = document.getElementById("nomor").value.trim();
-    const hasil = document.getElementById("hasil");
+/* SEARCH */
+function search(){
+let key=document.getElementById("keyword").value.toLowerCase();
+if(!key)return;
 
-    const data = database.find(item =>
-        item.nomorIjazah === input || item.nomorSeri === input
-    );
+showLoading();
 
-    if (data) {
-        const kodeVerifikasi = "VER-" + Math.floor(100000 + Math.random() * 900000);
+setTimeout(()=>{
+let d=db.find(x=>
+x.no.toLowerCase()===key ||
+x.nama.toLowerCase()===key
+);
 
-        hasil.innerHTML = `
-        <div class="result valid">
-            <h3>✅ IJAZAH TERVALIDASI</h3>
-            <div class="data-row"><strong>Nomor Ijazah:</strong> ${data.nomorIjazah}</div>
-            <div class="data-row"><strong>Nomor Seri Nasional:</strong> ${data.nomorSeri}</div>
-            <div class="data-row"><strong>NIM:</strong> ${data.nim}</div>
-            <div class="data-row"><strong>Nama Lengkap:</strong> ${data.nama}</div>
-            <div class="data-row"><strong>Tempat, Tanggal Lahir:</strong> ${data.ttl}</div>
-            <div class="data-row"><strong>Program Studi:</strong> ${data.prodi}</div>
-            <div class="data-row"><strong>Jenjang:</strong> ${data.jenjang}</div>
-            <div class="data-row"><strong>Fakultas:</strong> ${data.fakultas}</div>
-            <div class="data-row"><strong>IPK:</strong> ${data.ipk}</div>
-            <div class="data-row"><strong>Tahun Lulus:</strong> ${data.tahunLulus}</div>
-            <div class="data-row"><strong>Tanggal Terbit:</strong> ${data.tanggalTerbit}</div>
-            <div class="data-row"><strong>Status Keabsahan:</strong> ${data.status}</div>
-            <hr>
-            <div class="data-row"><strong>Kode Verifikasi:</strong> ${kodeVerifikasi}</div>
-            <div class="data-row"><strong>Tanggal Verifikasi:</strong> ${new Date().toLocaleDateString()}</div>
-        </div>
-        `;
-    } else {
-        hasil.innerHTML = `
-        <div class="result invalid">
-            <h3>❌ DATA TIDAK DITEMUKAN</h3>
-            Nomor ijazah atau nomor seri tidak terdaftar dalam sistem.
-        </div>
-        `;
-    }
+if(!d){
+alert("Data ijazah tidak ditemukan");
+hideLoading();
+return;
 }
 
+document.getElementById("r_nama").innerText=d.nama;
+document.getElementById("r_no").innerText=d.no;
+document.getElementById("r_nik").innerText=d.nik;
+document.getElementById("r_ttl").innerText=d.ttl;
+document.getElementById("r_prodi").innerText=d.prodi;
+document.getElementById("r_fakultas").innerText=d.fakultas;
+document.getElementById("r_jenjang").innerText=d.jenjang;
+document.getElementById("r_lulus").innerText=d.lulus;
+document.getElementById("r_sk").innerText=d.sk;
+document.getElementById("r_tgl").innerText=d.tgl;
+
+document.getElementById("pageSearch").classList.remove("active");
+document.getElementById("pageResult").classList.add("active");
+
+hideLoading();
+},1000);
+}
+
+/* BACK */
+function back(){
+document.getElementById("pageResult").classList.remove("active");
+document.getElementById("pageSearch").classList.add("active");
+}
+
+/* LOADING */
+function showLoading(){
+document.getElementById("loading").classList.add("active");
+}
+function hideLoading(){
+document.getElementById("loading").classList.remove("active");
+}
 </script>
 
 </body>
