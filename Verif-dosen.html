@@ -3,184 +3,106 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sistem Informasi Dosen Kontrak UNIMUS</title>
+<title>Database Dosen Kontrak UNIMUS</title>
 
 <style>
-
-/* ================= ROOT WARNA ================= */
+/* ROOT WARNA */
 :root{
-  --biru:#0b3c74;
-  --biru2:#082b55;
-  --emas:#c6a54a;
-  --emas2:#e5c76b;
-  --bg:#eef3f9;
-  --card:#ffffff;
-  --border:#dbe2ec;
-  --text:#1f2937;
-  --muted:#6b7280;
+--biru:#0b3c74;
+--biru2:#082b55;
+--emas:#c6a54a;
+--emas2:#e5c76b;
+--bg:#eef3f9;
+--card:#ffffff;
+--border:#dbe2ec;
+--text:#1f2937;
+--muted:#6b7280;
 }
 
-/* ================= BODY ================= */
+/* BODY */
 body{
-  margin:0;
-  font-family:"Segoe UI",Arial,Helvetica;
-  background:linear-gradient(180deg,#eef3f9,#e8eef7);
-  color:var(--text);
+margin:0;
+font-family:"Segoe UI",Arial,Helvetica;
+background:linear-gradient(180deg,var(--bg),#e8eef7);
+color:var(--text);
 }
 
-/* ================= HEADER ================= */
+/* LOADING */
+#loading{
+position:fixed;inset:0;background:rgba(255,255,255,.9);
+display:flex;align-items:center;justify-content:center;
+z-index:9999;opacity:0;pointer-events:none;transition:.3s;
+flex-direction:column;
+}
+#loading.active{opacity:1;pointer-events:auto;}
+.spinner{
+width:50px;height:50px;border:5px solid #dfe3e8;border-top:5px solid var(--biru);
+border-radius:50%;animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+#loading span{margin-top:12px;font-weight:600;color:var(--biru);font-size:14px;}
+
+/* HEADER */
 .header{
-  background:linear-gradient(90deg,var(--biru),var(--biru2));
-  color:#fff;
-  padding:18px 50px 22px;
-  display:flex;
-  align-items:center;
-  gap:18px;
-  border-bottom:5px solid var(--emas);
+background:linear-gradient(90deg,var(--biru),var(--biru2));
+color:white;padding:18px 50px 22px;display:flex;align-items:center;gap:18px;border-bottom:5px solid var(--emas);
 }
-
 .header img{width:100px;}
-
 .header-text .u{font-size:14px;}
 .header-text .n{font-size:26px;font-weight:700;}
+.header-info{font-size:13px;opacity:.9;}
+.header-badge{margin-left:auto;background:rgba(255,255,255,.15);padding:7px 16px;border-radius:22px;font-size:13px;}
 
-.header-info{
-  font-size:13px;
-  opacity:.9;
-}
-
-.header-badge{
-  margin-left:auto;
-  background:rgba(255,255,255,.15);
-  padding:7px 16px;
-  border-radius:22px;
-  font-size:13px;
-}
-
-/* ================= PAGE ================= */
+/* PAGE */
 .page{display:none;padding:45px 60px 80px;}
 .page.active{display:block;}
 
-/* ================= CARD ================= */
+/* CARD */
 .card{
-  background:#fff;
-  border-radius:18px;
-  padding:45px;
-  box-shadow:0 25px 60px rgba(0,0,0,.15);
-  border-top:6px solid var(--emas);
-  position:relative;
-  overflow:hidden;
+background:var(--card);border-radius:18px;padding:45px;
+box-shadow:0 25px 60px rgba(0,0,0,.15);
+border-top:6px solid var(--emas);position:relative;overflow:hidden;
 }
+.card-accent-top{position:absolute;top:0;left:0;width:100%;height:6px;background:linear-gradient(90deg,var(--emas),var(--emas2),var(--emas));}
+.card-accent-corner{position:absolute;top:-40px;right:-40px;width:180px;height:180px;border:2px solid rgba(198,165,74,.25);border-radius:50%;}
+.card-accent-corner2{position:absolute;bottom:-50px;left:-50px;width:220px;height:220px;border:2px dashed rgba(11,60,116,.18);border-radius:50%;}
+.watermark-unimus{position:absolute;inset:0;background:url('logo-unimus.png') center/320px no-repeat;opacity:.035;pointer-events:none;}
 
-/* ORNAMEN */
-.card-accent-top{
-position:absolute;top:0;left:0;width:100%;height:6px;
-background:linear-gradient(90deg,#c6a54a,#e5c76b,#c6a54a);
-}
-.card-accent-corner{
-position:absolute;top:-40px;right:-40px;width:180px;height:180px;
-border:2px solid rgba(198,165,74,.25);border-radius:50%;
-}
-.card-accent-corner2{
-position:absolute;bottom:-50px;left:-50px;width:220px;height:220px;
-border:2px dashed rgba(11,60,116,.18);border-radius:50%;
-}
-.watermark-unimus{
-position:absolute;inset:0;
-background:url("logo-unimus.png") center/320px no-repeat;
-opacity:.035;
-pointer-events:none;
-}
-
-/* ================= SEARCH ================= */
+/* SEARCH */
 .search-box{max-width:640px;margin:auto;text-align:center;}
 .search-logo{width:170px;margin-bottom:10px;}
 .search-title{font-size:27px;color:var(--biru);font-weight:700;}
 .search-sub{font-size:14px;color:var(--muted);margin-bottom:28px;}
-
-.search-input{
-width:100%;padding:15px;border-radius:12px;
-border:1px solid var(--border);font-size:14px;
-}
-
+.search-input{width:100%;padding:15px;border-radius:12px;border:1px solid var(--border);font-size:14px;}
 .btn{padding:12px 24px;border-radius:10px;border:none;cursor:pointer;font-weight:600;}
 .btn-primary{background:linear-gradient(90deg,var(--biru),var(--biru2));color:#fff;}
-.btn-back{background:#dbeafe;color:#0b3c74;}
-
+.btn-back{background:#dbeafe;color:var(--biru);}
 .btn-row{margin-top:22px;display:flex;gap:12px;justify-content:center;}
 
-/* ================= PROFILE ================= */
+/* PROFILE */
 .logo-center{text-align:center;}
 .logo-center img{width:170px;}
-
 .instansi{text-align:center;margin-bottom:15px;}
 .instansi .nama{font-size:22px;font-weight:700;color:var(--biru);}
 .instansi .status{font-size:14px;color:var(--muted);}
-
 .divider{height:2px;background:linear-gradient(90deg,var(--emas),transparent);margin:20px 0 30px;}
-
 .profile-top{display:flex;gap:34px;}
-
-.photo{
-width:215px;height:270px;border-radius:14px;
-overflow:hidden;border:5px solid #e6eaf1;
-}
+.photo{width:215px;height:270px;border-radius:14px;overflow:hidden;border:5px solid #e6eaf1;}
 .photo img{width:100%;height:100%;object-fit:cover;}
-
 .identity-table table{width:100%;border-collapse:collapse;}
-.identity-table td{
-border:1px solid var(--border);
-padding:10px 14px;
-font-size:14px;
-}
+.identity-table td{border:1px solid var(--border);padding:10px 14px;font-size:14px;}
 .identity-table tr:nth-child(odd){background:#f8fafc;}
 .identity-table td:first-child{width:230px;font-weight:600;color:var(--biru);}
-
-/* ================= TASK ================= */
 .task-table table{width:100%;border-collapse:collapse;}
-.task-table th{
-background:linear-gradient(90deg,var(--biru),var(--biru2));
-color:#fff;padding:10px;font-size:14px;
-}
+.task-table th{background:linear-gradient(90deg,var(--biru),var(--biru2));color:#fff;padding:10px;font-size:14px;}
 .task-table td{border:1px solid var(--border);padding:9px;font-size:14px;}
 .task-table tr:nth-child(even){background:#f1f6ff;}
-
-/* ================= TEXT ================= */
 .section-title{font-size:18px;font-weight:700;color:var(--biru);margin-top:28px;}
 .profile-text{font-size:14px;line-height:1.6;color:var(--text);margin-top:8px;}
-
-.footer{margin-top:35px;text-align:center;font-size:13px;color:var(--muted);
-border-top:1px solid var(--border);padding-top:12px;}
-
+.footer{margin-top:35px;text-align:center;font-size:13px;color:var(--muted);border-top:1px solid var(--border);padding-top:12px;}
 .sign{margin-top:40px;border-top:2px solid var(--border);padding-top:20px;}
 .sign-item{margin-bottom:14px;}
 .line{height:1px;background:var(--border);margin:12px 0;}
-
-/* ================= LOADING ================= */
-.loading{
-position:fixed;
-inset:0;
-background:rgba(255,255,255,.85);
-display:flex;
-align-items:center;
-justify-content:center;
-z-index:9999;
-opacity:0;
-pointer-events:none;
-transition:.3s;
-}
-.loading.active{opacity:1;pointer-events:auto;}
-
-.spinner{
-width:42px;height:42px;
-border:4px solid #e5e7eb;
-border-top:4px solid var(--biru);
-border-radius:50%;
-animation:spin 1s linear infinite;
-}
-@keyframes spin{to{transform:rotate(360deg);}}
-
-/* ================= RESPONSIVE ================= */
 @media(max-width:768px){
 .page{padding:20px;}
 .profile-top{flex-direction:column;align-items:center;}
@@ -188,7 +110,6 @@ animation:spin 1s linear infinite;
 .header{flex-direction:column;align-items:flex-start;}
 .header img{width:80px;}
 }
-
 </style>
 </head>
 
@@ -196,6 +117,7 @@ animation:spin 1s linear infinite;
 
 <div id="loading" class="loading">
 <div class="spinner"></div>
+<span>Memuat data akademik...</span>
 </div>
 
 <!-- HEADER -->
@@ -222,9 +144,9 @@ Telp (024) 76740296 • www.unimus.ac.id
 
 <img src="logo-unimus.png" class="search-logo">
 <div class="search-title">Sistem Informasi Dosen Kontrak</div>
-<div class="search-sub">Pencarian berdasarkan Nama / NIDK</div>
+<div class="search-sub">Pencarian berdasarkan Nama / NIDK / Fakultas / Prodi</div>
 
-<input id="keyword" class="search-input" placeholder="Masukkan Nama atau NIDK">
+<input id="keyword" class="search-input" placeholder="Masukkan Nama, NIDK, Fakultas, atau Prodi">
 
 <div class="btn-row">
 <button class="btn btn-primary" onclick="search()">Cari Data</button>
@@ -266,8 +188,7 @@ Biro Administrasi Akademik<br>
 <tr><td>Program Studi</td><td id="prodi"></td></tr>
 <tr><td>Fakultas</td><td id="fak"></td></tr>
 <tr><td>Email</td><td id="email"></td></tr>
-<tr><td>Pendidikan S1</td><td id="s1"></td></tr>
-<tr><td>Pendidikan S2</td><td id="s2"></td></tr>
+<tr><td>Pendidikan</td><td id="pendidikan"></td></tr>
 </table>
 </div>
 </div>
@@ -304,12 +225,11 @@ Biro Administrasi Akademik<br>
 
 <div class="section-title">Penugasan Pengajaran</div>
 <div class="profile-text">
-Berdasarkan SK Dekan Fakultas terkait, dosen kontrak melaksanakan pengajaran semester berjalan dengan beban 10–11 SKS.
+Berdasarkan SK Dekan Fakultas terkait, dosen kontrak melaksanakan pengajaran semester berjalan dengan beban ±10–12 SKS.
 </div>
 
 <div class="task-table">
-<table id="taskBody">
-</table>
+<table id="taskBody"></table>
 </div>
 
 <div class="sign">
@@ -339,16 +259,135 @@ NIDK <span id="ttdNidk"></span>
 </div>
 
 <script>
-
 /* ================= DATABASE ================= */
 const dosenDB={
+"ahmad":{
+nama:"Ahmad Syafii Ma'arif, S.M., M.M.",
+nidk:"0123456789",
+ttl:"Semarang, 12 Maret 1988",
+jk:"Laki-laki",
+prodi:"Manajemen",
+fak:"FEB",
+email:"ahmadsyafii@unimus.ac.id",
+s1:"S1 Manajemen - UNISSULA",
+s2:"S2 Manajemen - UNDIP",
+profil:"Dosen bidang manajemen sumber daya manusia dan kewirausahaan. Berpengalaman dalam pengembangan UMKM dan manajemen organisasi.",
+latar:"Memiliki pengalaman akademik dan praktis di bidang manajemen dan kewirausahaan, aktif dalam penelitian terapan.",
+foto:"foto-ahmad.jpg",
+task:[
+["1","MNM101","Pengantar Manajemen","A","2","Senin","Mar–Jun"],
+["2","MNM204","Manajemen SDM","B","3","Selasa","Mar–Jun"],
+["3","MNM310","Perilaku Organisasi","A","2","Rabu","Mar–Jun"],
+["4","MNM402","Kewirausahaan","C","2","Kamis","Mar–Jun"],
+["5","MNM415","Manajemen Strategik","A","2","Jumat","Mar–Jun"]
+]},
+"dwi":{
+nama:"Dwi Agustina, S.E., M.M",
+nidk:"0223456789",
+ttl:"Kendal, 5 Mei 1990",
+jk:"Perempuan",
+prodi:"Manajemen",
+fak:"FEB",
+email:"dwiagustina@unimus.ac.id",
+s1:"S1 Manajemen - UNNES",
+s2:"S2 Manajemen - UNDIP",
+profil:"Dosen manajemen keuangan dan pemasaran, fokus pada strategi bisnis dan analisis pasar.",
+latar:"Berpengalaman dalam pengajaran manajemen dan riset pemasaran.",
+foto:"foto-dwi.jpg",
+task:[
+["1","MNM102","Pengantar Bisnis","A","2","Senin","Mar–Jun"],
+["2","MNM215","Manajemen Pemasaran","B","3","Selasa","Mar–Jun"],
+["3","MNM221","Manajemen Keuangan","A","3","Rabu","Mar–Jun"],
+["4","MNM318","Riset Pemasaran","C","2","Kamis","Mar–Jun"],
+["5","MNM420","Manajemen Operasional","A","2","Jumat","Mar–Jun"]
+]},
+"ning":{
+nama:"Ningtiyas Anggraini Putri, S.H., M.H",
+nidk:"0323456789",
+ttl:"Pati, 18 Juli 1989",
+jk:"Perempuan",
+prodi:"Ilmu Hukum",
+fak:"Hukum",
+email:"ningtiyas@unimus.ac.id",
+s1:"S1 Hukum - UNNES",
+s2:"S2 Hukum - UNDIP",
+profil:"Dosen hukum perdata dan bisnis, minat pada kontrak dan litigasi perdata.",
+latar:"Mengajar hukum perdata, hukum bisnis dan etika profesi hukum.",
+foto:"foto-ning.jpg",
+task:[
+["1","HKM101","Pengantar Ilmu Hukum","A","2","Senin","Mar–Jun"],
+["2","HKM210","Hukum Perdata","B","3","Selasa","Mar–Jun"],
+["3","HKM305","Hukum Bisnis","A","2","Rabu","Mar–Jun"],
+["4","HKM312","Hukum Perjanjian","C","2","Kamis","Mar–Jun"],
+["5","HKM410","Etika Profesi Hukum","A","2","Jumat","Mar–Jun"]
+]},
+"ayu":{
+nama:"Ayuningsih Dwita Sari, S.Kom., M.Kom",
+nidk:"0423456789",
+ttl:"Semarang, 21 Januari 1992",
+jk:"Perempuan",
+prodi:"Informatika",
+fak:"FTI",
+email:"ayu.dwita@unimus.ac.id",
+s1:"S1 Informatika - UAD",
+s2:"S2 Informatika - UNDIP",
+profil:"Dosen sistem informasi dan rekayasa perangkat lunak, ahli pengembangan aplikasi web dan database.",
+latar:"Berpengalaman dalam pengembangan sistem informasi, analisis dan pengelolaan database.",
+foto:"foto-ayu.jpg",
+task:[
+["1","INF101","Algoritma","A","3","Senin","Mar–Jun"],
+["2","INF210","Basis Data","B","3","Selasa","Mar–Jun"],
+["3","INF305","Rekayasa Perangkat Lunak","A","2","Rabu","Mar–Jun"],
+["4","INF315","Sistem Informasi","C","2","Kamis","Mar–Jun"],
+["5","INF420","Pemrograman Web","A","2","Jumat","Mar–Jun"]
+]},
+"renaldi":{
+nama:"Renaldi Hutasoit, S.Pd., M.Pd.",
+nidk:"0523456789",
+ttl:"Medan, 7 Februari 1987",
+jk:"Laki-laki",
+prodi:"Pendidikan Bahasa Inggris",
+fak:"FKIP",
+email:"renaldi@unimus.ac.id",
+s1:"S1 Pendidikan Inggris - UNIMED",
+s2:"S2 Pendidikan Inggris - UNNES",
+profil:"Dosen pendidikan bahasa Inggris, fokus metode pengajaran dan linguistik terapan.",
+latar:"Mengajar bahasa Inggris, evaluasi pembelajaran, dan pengembangan kurikulum.",
+foto:"foto-renaldi.jpg",
+task:[
+["1","PBI101","Basic English","A","2","Senin","Mar–Jun"],
+["2","PBI205","English Grammar","B","3","Selasa","Mar–Jun"],
+["3","PBI310","Teaching Method","A","3","Rabu","Mar–Jun"],
+["4","PBI320","Reading Skill","C","2","Kamis","Mar–Jun"],
+["5","PBI410","Language Assessment","A","2","Jumat","Mar–Jun"]
+]},
+"mahmud":{
+nama:"Mahmud Yunus, S.Pd., Gr., M.Pd.",
+nidk:"0623456789",
+ttl:"Demak, 3 September 1990",
+jk:"Laki-laki",
+prodi:"Pendidikan Matematika",
+fak:"FKIP",
+email:"mahmud.yunus@unimus.ac.id",
+s1:"S1 Pendidikan Matematika - UNNES",
+s2:"S2 Pendidikan Matematika - UNDIP",
+profil:"Dosen pendidikan matematika, berfokus pada metode pengajaran, pembelajaran inovatif, dan pengembangan media belajar.",
+latar:"Berpengalaman dalam penelitian pendidikan matematika dan pengembangan materi ajar berbasis teknologi.",
+foto:"foto-mahmud.jpg",
+task:[
+["1","PMT101","Matematika Dasar","A","3","Senin","Mar–Jun"],
+["2","PMT205","Aljabar","B","2","Selasa","Mar–Jun"],
+["3","PMT310","Statistika","A","3","Rabu","Mar–Jun"],
+["4","PMT320","Geometri","C","2","Kamis","Mar–Jun"],
+["5","PMT410","Analisis Data","A","2","Jumat","Mar–Jun"]
+]},
 "agil":{
 nama:"Muhammad Agil, S.M., M.M., M.Ling.",
 nidk:"01261627119",
 ttl:"Semarang, 12 Januari 1990",
 jk:"Laki-laki",
 prodi:"Manajemen",
-fak:"Fakultas Ekonomi dan Bisnis",
+fak:"FEB",
 email:"agil@unimus.ac.id",
 s1:"S1 Manajemen — Universitas Diponegoro",
 s2:"S2 Manajemen — Universitas Diponegoro; S2 Ilmu Lingkungan — Universitas Terbuka",
@@ -365,9 +404,7 @@ task:[
 }
 };
 
-let currentDosen=null;
-
-/* ================= LOADING ================= */
+/* ================= LOADING FUNCTIONS ================= */
 function showLoading(){
 document.getElementById("loading").classList.add("active");
 }
@@ -375,23 +412,23 @@ function hideLoading(){
 document.getElementById("loading").classList.remove("active");
 }
 
-/* ================= SEARCH ================= */
+/* ================= SEARCH FUNCTION ================= */
 function search(){
 let k=document.getElementById("keyword").value.toLowerCase().trim();
 if(!k){alert("Masukkan keyword");return;}
-
 for(let key in dosenDB){
 let d=dosenDB[key];
 let text=(d.nama+d.nidk+d.prodi+d.fak+d.email+d.s1+d.s2+d.ttl).toLowerCase();
 if(text.includes(k)){
 showLoading();
-setTimeout(()=>showProfile(d),500);
+setTimeout(()=>showProfile(d),700); // loading lebih lama
 return;
 }}
 alert("Data dosen tidak ditemukan");
 }
 
 /* ================= SHOW PROFILE ================= */
+let currentDosen=null;
 function showProfile(d){
 currentDosen=d;
 hideLoading();
@@ -407,53 +444,35 @@ document.getElementById("jk").innerText=d.jk;
 document.getElementById("prodi").innerText=d.prodi;
 document.getElementById("fak").innerText=d.fak;
 document.getElementById("email").innerText=d.email;
-document.getElementById("s1").innerText=d.s1;
-document.getElementById("s2").innerText=d.s2;
+document.getElementById("pendidikan").innerText="S1: "+d.s1+" | S2: "+d.s2;
 document.getElementById("profil").innerText=d.profil;
 document.getElementById("latar").innerText=d.latar;
 document.getElementById("ttdNama").innerText=d.nama;
 document.getElementById("ttdNidk").innerText=d.nidk;
 }
 
-/* ================= TASK ================= */
+/* ================= TASK FUNCTION ================= */
 function openTask(){
-if(!currentDosen)return;
-
+if(!currentDosen)return;,
 showLoading();
-
 setTimeout(()=>{
 hideLoading();
-
 document.getElementById("pageProfile").classList.remove("active");
 document.getElementById("pageTask").classList.add("active");
 
-let html=`
-<tr>
-<th>No</th>
-<th>Kode</th>
-<th>Mata Kuliah</th>
-<th>Kelas</th>
-<th>SKS</th>
-<th>Hari</th>
-<th>Periode</th>
+let html=`<tr>
+<th>No</th><th>Kode</th><th>Mata Kuliah</th><th>Kelas</th><th>SKS</th><th>Hari</th><th>Periode</th>
 </tr>`;
 currentDosen.task.forEach(r=>{
 html+=`<tr>
-<td>${r[0]}</td>
-<td>${r[1]}</td>
-<td>${r[2]}</td>
-<td>${r[3]}</td>
-<td>${r[4]}</td>
-<td>${r[5]}</td>
-<td>${r[6]}</td>
+<td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${r[4]}</td><td>${r[5]}</td><td>${r[6]}</td>
 </tr>`;
 });
 document.getElementById("taskBody").innerHTML=html;
-
-},500);
+},700);
 }
 
-/* ================= NAV ================= */
+/* ================= NAVIGATION ================= */
 function backSearch(){
 document.getElementById("pageProfile").classList.remove("active");
 document.getElementById("pageSearch").classList.add("active");
@@ -462,8 +481,6 @@ function backProfile(){
 document.getElementById("pageTask").classList.remove("active");
 document.getElementById("pageProfile").classList.add("active");
 }
-
 </script>
-
 </body>
 </html>
