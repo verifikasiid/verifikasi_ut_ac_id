@@ -1,780 +1,473 @@
+<!-- =========================
+PDDIKTI STYLE REFINED VERSION
+(STRUCTURE SAME AS USER CODE)
+========================= -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pangkalan Data Pendidikan Tinggi - PDDikti</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
-        }
-
-        /* Header */
-        .header {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 15px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .logo-icon::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            width: 20px;
-            height: 20px;
-            background: rgba(255,255,255,0.3);
-            border-radius: 50%;
-        }
-
-        .logo-text h1 {
-            font-size: 18px;
-            font-weight: 700;
-            color: #764ba2;
-            line-height: 1.2;
-        }
-
-        .logo-text span {
-            font-size: 12px;
-            color: #666;
-            font-weight: 500;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-menu li {
-            position: relative;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: color 0.3s;
-        }
-
-        .nav-menu a:hover {
-            color: #764ba2;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 60px 20px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
-        }
-
-        .hero-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255,255,255,0.2);
-            padding: 8px 20px;
-            border-radius: 50px;
-            color: white;
-            font-size: 14px;
-            margin-bottom: 20px;
-            backdrop-filter: blur(10px);
-        }
-
-        .hero h2 {
-            color: white;
-            font-size: 42px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .hero-subtitle {
-            color: rgba(255,255,255,0.9);
-            font-size: 18px;
-            margin-bottom: 30px;
-        }
-
-        .hero-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: white;
-            color: #764ba2;
-            padding: 12px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: transform 0.3s;
-        }
-
-        .hero-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .hero-illustration {
-            position: absolute;
-            right: 10%;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 300px;
-            height: 300px;
-        }
-
-        .floating-card {
-            position: absolute;
-            background: rgba(255,255,255,0.95);
-            border-radius: 15px;
-            padding: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .floating-card:nth-child(1) {
-            top: 20px;
-            right: 0;
-            animation-delay: 0s;
-        }
-
-        .floating-card:nth-child(2) {
-            bottom: 20px;
-            left: 0;
-            animation-delay: 1.5s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* Search Section */
-        .search-section {
-            background: white;
-            padding: 30px 20px;
-            margin-top: -30px;
-            position: relative;
-            z-index: 10;
-            border-radius: 20px 20px 0 0;
-        }
-
-        .search-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .search-box {
-            display: flex;
-            background: white;
-            border-radius: 50px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            overflow: hidden;
-            border: 2px solid #e0e0e0;
-        }
-
-        .search-dropdown {
-            background: #f0f0f0;
-            padding: 15px 25px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            font-weight: 600;
-            color: #333;
-            border-right: 1px solid #ddd;
-        }
-
-        .search-input {
-            flex: 1;
-            border: none;
-            padding: 15px 20px;
-            font-size: 14px;
-            outline: none;
-            color: #999;
-        }
-
-        .search-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 15px 25px;
-            cursor: pointer;
-            font-size: 18px;
-        }
-
-        .search-link {
-            text-align: center;
-            margin-top: 15px;
-        }
-
-        .search-link a {
-            color: #764ba2;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        /* Menu Grid */
-        .menu-section {
-            background: white;
-            padding: 40px 20px;
-        }
-
-        .menu-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .menu-item {
-            background: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .menu-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-color: #764ba2;
-        }
-
-        .menu-icon {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-            font-size: 28px;
-        }
-
-        .menu-item:nth-child(1) .menu-icon { background: #fff3e0; color: #ff9800; }
-        .menu-item:nth-child(2) .menu-icon { background: #f3e5f5; color: #9c27b0; }
-        .menu-item:nth-child(3) .menu-icon { background: #e8f5e9; color: #4caf50; }
-        .menu-item:nth-child(4) .menu-icon { background: #e3f2fd; color: #2196f3; }
-        .menu-item:nth-child(5) .menu-icon { background: #fce4ec; color: #e91e63; }
-        .menu-item:nth-child(6) .menu-icon { background: #fff8e1; color: #ffc107; }
-
-        .menu-item h3 {
-            font-size: 14px;
-            color: #333;
-            font-weight: 600;
-        }
-
-        /* Info Cards */
-        .info-section {
-            background: #f8f9fa;
-            padding: 40px 20px;
-        }
-
-        .info-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .info-card {
-            border-radius: 20px;
-            padding: 30px;
-            color: white;
-            position: relative;
-            overflow: hidden;
-            min-height: 180px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .info-card:nth-child(1) {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-
-        .info-card:nth-child(2) {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        }
-
-        .info-card h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            max-width: 70%;
-        }
-
-        .info-card p {
-            font-size: 14px;
-            opacity: 0.9;
-            margin-bottom: 15px;
-            max-width: 70%;
-        }
-
-        .info-card a {
-            color: white;
-            text-decoration: underline;
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .info-icon {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 80px;
-            opacity: 0.3;
-        }
-
-        /* Popular Fields */
-        .popular-section {
-            background: white;
-            padding: 40px 20px;
-        }
-
-        .section-header {
-            max-width: 1200px;
-            margin: 0 auto 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 20px;
-            font-weight: 700;
-            color: #764ba2;
-        }
-
-        .section-title i {
-            color: #764ba2;
-            font-size: 16px;
-        }
-
-        .see-all {
-            color: #764ba2;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .popular-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .popular-card {
-            background: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 15px;
-            padding: 25px;
-            display: flex;
-            gap: 15px;
-            transition: all 0.3s;
-        }
-
-        .popular-card:hover {
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .popular-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            flex-shrink: 0;
-        }
-
-        .popular-card:nth-child(1) .popular-icon { background: #e8f5e9; color: #4caf50; }
-        .popular-card:nth-child(2) .popular-icon { background: #fff3e0; color: #ff9800; }
-        .popular-card:nth-child(3) .popular-icon { background: #e3f2fd; color: #2196f3; }
-
-        .popular-content h4 {
-            font-size: 16px;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 8px;
-        }
-
-        .popular-content p {
-            font-size: 12px;
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 3px;
-        }
-
-        .popular-content .percentage {
-            color: #4caf50;
-            font-weight: 600;
-        }
-
-        /* Statistics Section */
-        .stats-section {
-            background: #f8f9fa;
-            padding: 40px 20px;
-        }
-
-        .stats-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .stat-card {
-            border-radius: 15px;
-            padding: 25px;
-            color: white;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-card:nth-child(1) { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        .stat-card:nth-child(2) { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
-        .stat-card:nth-child(3) { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
-        .stat-card:nth-child(4) { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
-
-        .stat-icon {
-            font-size: 40px;
-            margin-bottom: 10px;
-            opacity: 0.9;
-        }
-
-        .stat-card h4 {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-        }
-
-        .stat-number {
-            font-size: 28px;
-            font-weight: 700;
-            margin: 10px 0;
-        }
-
-        .stats-note {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 12px;
-            color: #666;
-        }
-
-        /* Publications Section */
-        .publications-section {
-            background: white;
-            padding: 40px 20px;
-        }
-
-        .pub-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .pub-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            transition: transform 0.3s;
-        }
-
-        .pub-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .pub-cover {
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .pub-card:nth-child(1) .pub-cover {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .pub-card:nth-child(2) .pub-cover {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-
-        .pub-card:nth-child(3) .pub-cover {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        }
-
-        .pub-card:nth-child(4) .pub-cover {
-            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-        }
-
-        .pub-year {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(255,255,255,0.9);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-            color: #333;
-        }
-
-        .pub-content {
-            padding: 20px;
-        }
-
-        .pub-content h4 {
-            font-size: 14px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 15px;
-            line-height: 1.4;
-        }
-
-        .pub-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 10px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 600;
-            width: 100%;
-        }
-
-        /* Activities Section */
-        .activities-section {
-            background: #f8f9fa;
-            padding: 40px 20px;
-        }
-
-        .act-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .act-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-        }
-
-        .act-image {
-            height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .act-badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: #ffd700;
-            color: #333;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 700;
-        }
-
-        .act-content {
-            padding: 20px;
-        }
-
-        .act-content h4 {
-            font-size: 14px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 10px;
-            line-height: 1.4;
-        }
-
-        .act-link {
-            color: #764ba2;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        /* Footer */
-        .footer {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 50px 20px 30px;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 50px;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .footer-logo-icon {
-            width: 60px;
-            height: 60px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #764ba2;
-            font-size: 28px;
-            flex-shrink: 0;
-        }
-
-        .footer-info h3 {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 5px;
-            line-height: 1.4;
-        }
-
-        .footer-info p {
-            font-size: 13px;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-
-        .footer-address {
-            margin-top: 15px;
-            font-size: 13px;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-
-        .footer-social h4 {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pangkalan Data Pendidikan Tinggi - PDDikti</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:#f4f6f9;
+color:#1f2937;
+}
+
+
+/* ================= HEADER ================= */
+.header{
+background:#ffffff;
+border-bottom:1px solid #e5e7eb;
+}
+
+.nav-container{
+max-width:1200px;
+margin:auto;
+padding:14px 20px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.logo-section{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.logo-icon{
+width:42px;
+height:42px;
+background:#2563eb;
+border-radius:8px;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:18px;
+}
+
+.logo-text h1{
+font-size:15px;
+font-weight:700;
+color:#1e3a8a;
+line-height:1.1;
+}
+
+.logo-text span{
+font-size:11px;
+color:#6b7280;
+}
+
+.nav-menu{
+display:flex;
+gap:22px;
+list-style:none;
+}
+
+.nav-menu a{
+text-decoration:none;
+color:#374151;
+font-size:13px;
+font-weight:500;
+}
+
+.nav-menu a:hover{
+color:#2563eb;
+}
+
+
+/* ================= HERO ================= */
+.hero{
+background:linear-gradient(180deg,#1d4ed8 0%,#2563eb 100%);
+padding:38px 20px;
+}
+
+.hero-content{
+max-width:1200px;
+margin:auto;
+}
+
+.hero h2{
+color:white;
+font-size:28px;
+font-weight:700;
+margin-bottom:6px;
+}
+
+.hero-subtitle{
+color:#dbeafe;
+font-size:14px;
+margin-bottom:16px;
+}
+
+.hero-btn{
+display:inline-flex;
+align-items:center;
+gap:8px;
+background:#ffffff;
+color:#1d4ed8;
+padding:9px 18px;
+border-radius:20px;
+text-decoration:none;
+font-size:13px;
+font-weight:600;
+}
+
+
+/* ================= SEARCH ================= */
+.search-section{
+background:#ffffff;
+padding:26px 20px;
+border-bottom:1px solid #e5e7eb;
+}
+
+.search-container{
+max-width:900px;
+margin:auto;
+}
+
+.search-box{
+display:flex;
+border:1px solid #d1d5db;
+border-radius:6px;
+overflow:hidden;
+background:#fff;
+}
+
+.search-dropdown{
+background:#f3f4f6;
+padding:12px 14px;
+font-size:13px;
+display:flex;
+align-items:center;
+gap:6px;
+border-right:1px solid #e5e7eb;
+}
+
+.search-input{
+flex:1;
+border:none;
+padding:12px 14px;
+font-size:13px;
+outline:none;
+}
+
+.search-btn{
+background:#2563eb;
+color:white;
+border:none;
+padding:0 16px;
+cursor:pointer;
+}
+
+.search-link{
+margin-top:8px;
+text-align:right;
+}
+
+.search-link a{
+font-size:12px;
+color:#2563eb;
+text-decoration:none;
+}
+
+
+/* ================= MENU ================= */
+.menu-section{
+background:#ffffff;
+padding:28px 20px;
+}
+
+.menu-container{
+max-width:1200px;
+margin:auto;
+}
+
+.menu-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:16px;
+}
+
+.menu-item{
+border:1px solid #e5e7eb;
+border-radius:8px;
+padding:18px;
+text-align:center;
+background:#fff;
+transition:.2s;
+}
+
+.menu-item:hover{
+border-color:#2563eb;
+}
+
+.menu-icon{
+width:44px;
+height:44px;
+margin:auto auto 8px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:8px;
+background:#eff6ff;
+color:#2563eb;
+font-size:18px;
+}
+
+.menu-item h3{
+font-size:13px;
+font-weight:600;
+color:#1f2937;
+}
+
+
+/* ================= INFO ================= */
+.info-section{
+background:#f9fafb;
+padding:30px 20px;
+}
+
+.info-container{
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:16px;
+}
+
+.info-card{
+background:#2563eb;
+color:white;
+padding:20px;
+border-radius:8px;
+}
+
+.info-card:nth-child(2){
+background:#0ea5e9;
+}
+
+.info-card h3{
+font-size:16px;
+margin-bottom:6px;
+}
+
+.info-card p{
+font-size:13px;
+margin-bottom:6px;
+}
+
+.info-card a{
+color:#fff;
+font-size:13px;
+text-decoration:underline;
+}
+
+
+/* ================= STATS ================= */
+.stats-section{
+background:#ffffff;
+padding:30px 20px;
+}
+
+.stats-grid{
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:16px;
+}
+
+.stat-card{
+border:1px solid #e5e7eb;
+border-radius:8px;
+padding:18px;
+text-align:center;
+background:#f8fafc;
+}
+
+.stat-icon{
+font-size:24px;
+color:#2563eb;
+margin-bottom:6px;
+}
+
+.stat-number{
+font-size:20px;
+font-weight:700;
+color:#1e3a8a;
+}
+
+.stat-card h4{
+font-size:13px;
+margin-bottom:4px;
+}
+
+
+/* ================= FOOTER ================= */
+.footer{
+background:#1e3a8a;
+color:white;
+padding:30px 20px;
+margin-top:30px;
+}
+
+.footer-container{
+max-width:1200px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+gap:20px;
+}
+
+.footer-info h3{
+font-size:14px;
+margin-bottom:6px;
+}
+
+.footer-address{
+font-size:12px;
+color:#c7d2fe;
+}
+
+.footer-bottom{
+margin-top:18px;
+border-top:1px solid rgba(255,255,255,.2);
+padding-top:10px;
+font-size:12px;
+text-align:center;
+}
+
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+.menu-grid{grid-template-columns:repeat(2,1fr);}
+.stats-grid{grid-template-columns:repeat(2,1fr);}
+.info-container{grid-template-columns:1fr;}
+}
+
+@media(max-width:600px){
+.nav-menu{display:none;}
+.menu-grid{grid-template-columns:1fr;}
+.stats-grid{grid-template-columns:1fr;}
+.search-box{flex-direction:column;}
+.search-dropdown{border-right:none;border-bottom:1px solid #e5e7eb;}
+}
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+<div class="nav-container">
+<div class="logo-section">
+<div class="logo-icon"><i class="fas fa-database"></i></div>
+<div class="logo-text">
+<h1>Pangkalan Data<br>Pendidikan Tinggi</h1>
+<span>PDDikti</span>
+</div>
+</div>
+
+<ul class="nav-menu">
+<li><a href="#">Tentang</a></li>
+<li><a href="#">Kebijakan Privasi</a></li>
+<li><a href="#">Keamanan Informasi</a></li>
+</ul>
+</div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-content">
+<h2>Update Pelaporan PDDikti</h2>
+<p class="hero-subtitle">Pastikan data perguruan tinggi selalu terbarui</p>
+<a href="#" class="hero-btn">Klik Disini <i class="fas fa-arrow-right"></i></a>
+</div>
+</section>
+
+<!-- SEARCH -->
+<section class="search-section">
+<div class="search-container">
+<div class="search-box">
+<div class="search-dropdown">Semua <i class="fas fa-chevron-down"></i></div>
+<input class="search-input" placeholder="Kata kunci: Nama / PT / Prodi / NIM / NIDN">
+<button class="search-btn"><i class="fas fa-search"></i></button>
+</div>
+<div class="search-link"><a href="#">Pencarian Spesifik</a></div>
+</div>
+</section>
+
+<!-- MENU -->
+<section class="menu-section">
+<div class="menu-container">
+<div class="menu-grid">
+<div class="menu-item"><div class="menu-icon"><i class="fas fa-book"></i></div><h3>Program Studi</h3></div>
+<div class="menu-item"><div class="menu-icon"><i class="fas fa-university"></i></div><h3>Perguruan Tinggi</h3></div>
+<div class="menu-item"><div class="menu-icon"><i class="fas fa-chart-pie"></i></div><h3>Statistik</h3></div>
+<div class="menu-item"><div class="menu-icon"><i class="fas fa-file-alt"></i></div><h3>Publikasi</h3></div>
+<div class="menu-item"><div class="menu-icon"><i class="fas fa-bullhorn"></i></div><h3>Pengumuman</h3></div>
+<div class="menu-item"><div class="menu-icon"><i class="fas fa-map-marked-alt"></i></div><h3>Peta</h3></div>
+</div>
+</div>
+</section>
+
+<!-- INFO -->
+<section class="info-section">
+<div class="info-container">
+<div class="info-card">
+<h3>Ada kendala terkait data?</h3>
+<p>Cari informasi di sini</p>
+<a href="#">di sini</a>
+</div>
+
+<div class="info-card">
+<h3>Komparasi Perguruan Tinggi</h3>
+<p>Bandingkan PT & Prodi</p>
+<a href="#">di sini</a>
+</div>
+</div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+<div class="stats-grid">
+<div class="stat-card"><div class="stat-icon"><i class="fas fa-user-graduate"></i></div><h4>Mahasiswa</h4><div class="stat-number">5.8M+</div></div>
+<div class="stat-card"><div class="stat-icon"><i class="fas fa-chalkboard-teacher"></i></div><h4>Dosen</h4><div class="stat-number">320K+</div></div>
+<div class="stat-card"><div class="stat-icon"><i class="fas fa-university"></i></div><h4>Perguruan Tinggi</h4><div class="stat-number">4.5K+</div></div>
+<div class="stat-card"><div class="stat-icon"><i class="fas fa-book-open"></i></div><h4>Program Studi</h4><div class="stat-number">35K+</div></div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="footer-container">
+<div class="footer-info">
+<h3>Pusat Data dan Teknologi Informasi</h3>
+<div class="footer-address">
+Kementerian Pendidikan Tinggi, Sains, dan Teknologi<br>
+Jl. Jenderal Sudirman, Senayan, Jakarta
+</div>
+</div>
+</div>
+
+<div class="footer-bottom">
+© 2024 PDDikti
+</div>
+</footer>
+
+</body>
+</html>
