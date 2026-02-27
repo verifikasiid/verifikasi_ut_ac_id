@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pangkalan Data Pendidikan Tinggi</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================= ROOT ================= */
+:root{
+--ungu1:#6a11cb;
+--ungu2:#8e2de2;
+--ungu3:#a044ff;
+--bg:#f4f5f7;
+--card:#ffffff;
+--text:#1f2937;
+--muted:#6b7280;
+}
+
+body{
+margin:0;
+font-family:"Poppins",sans-serif;
+background:var(--bg);
+color:var(--text);
+}
+
+/* ================= NAVBAR ================= */
+.navbar{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:14px 40px;
+background:#fff;
+box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+font-weight:600;
+}
+
+.logo img{
+width:40px;
+}
+
+.nav-links{
+display:flex;
+gap:28px;
+font-size:14px;
+color:#555;
+}
+
+/* ================= HERO ================= */
+.hero{
+background:linear-gradient(135deg,var(--ungu1),var(--ungu2));
+padding:60px 40px 90px;
+color:white;
+position:relative;
+overflow:hidden;
+}
+
+.hero h1{
+font-size:32px;
+margin:0;
+}
+
+.hero p{
+opacity:.9;
+margin-top:6px;
+}
+
+/* SEARCH BAR */
+.search-wrap{
+margin-top:30px;
+display:flex;
+justify-content:center;
+}
+
+.search-box{
+background:white;
+border-radius:16px;
+padding:8px;
+display:flex;
+width:720px;
+box-shadow:0 8px 30px rgba(0,0,0,.15);
+}
+
+.search-box select{
+border:none;
+padding:12px;
+font-size:14px;
+border-right:1px solid #eee;
+outline:none;
+}
+
+.search-box input{
+flex:1;
+border:none;
+padding:12px;
+font-size:14px;
+outline:none;
+}
+
+.search-btn{
+background:linear-gradient(135deg,var(--ungu1),var(--ungu3));
+border:none;
+color:white;
+padding:0 22px;
+border-radius:12px;
+cursor:pointer;
+}
+
+/* ================= SECTION ================= */
+.section{
+padding:30px 40px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.card{
+background:var(--card);
+border-radius:16px;
+padding:20px;
+box-shadow:0 6px 18px rgba(0,0,0,.08);
+transition:.2s;
+cursor:pointer;
+}
+
+.card:hover{
+transform:translateY(-4px);
+}
+
+.card-icon{
+font-size:30px;
+margin-bottom:10px;
+}
+
+.card-title{
+font-weight:600;
+}
+
+.card-sub{
+font-size:13px;
+color:var(--muted);
+}
+
+/* ================= STAT GRID ================= */
+.stat-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+}
+
+.stat-card{
+color:white;
+padding:24px;
+border-radius:16px;
+font-weight:600;
+}
+
+.stat1{background:linear-gradient(135deg,#36d1dc,#5b86e5);}
+.stat2{background:linear-gradient(135deg,#f7971e,#ffd200);}
+.stat3{background:linear-gradient(135deg,#00c9ff,#92fe9d);}
+.stat4{background:linear-gradient(135deg,#f953c6,#b91d73);}
+
+/* ================= PUBLIKASI ================= */
+.pub-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+}
+
+.pub-card{
+background:white;
+border-radius:16px;
+padding:12px;
+box-shadow:0 6px 18px rgba(0,0,0,.08);
+}
+
+.pub-card img{
+width:100%;
+border-radius:10px;
+}
+
+.pub-title{
+font-size:14px;
+margin-top:8px;
+}
+
+.btn-unduh{
+margin-top:6px;
+display:inline-block;
+padding:6px 12px;
+border-radius:8px;
+background:linear-gradient(135deg,var(--ungu1),var(--ungu3));
+color:white;
+font-size:12px;
+}
+
+/* ================= FOOTER ================= */
+.footer{
+margin-top:40px;
+background:linear-gradient(135deg,var(--ungu1),var(--ungu2));
+color:white;
+padding:40px;
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:20px;
+}
+
+.footer-left{
+max-width:400px;
+}
+
+.footer img{
+width:60px;
+margin-bottom:10px;
+}
+
+.footer small{
+opacity:.9;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+
+.navbar{
+flex-direction:column;
+align-items:flex-start;
+gap:10px;
+}
+
+.search-box{
+width:100%;
+}
+
+.hero{
+padding:40px 20px 70px;
+}
+
+.section{
+padding:20px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<div class="navbar">
+<div class="logo">
+<img src="logo-dikti.png">
+<span>Pangkalan Data Pendidikan Tinggi</span>
+</div>
+
+<div class="nav-links">
+<span>Tentang</span>
+<span>Kebijakan Privasi</span>
+<span>Kebijakan Keamanan</span>
+<span>Informasi</span>
+</div>
+</div>
+
+<!-- ================= HERO ================= -->
+<div class="hero">
+
+<h1>Jangan Lewatkan!</h1>
+<p>Update Pelaporan PDDikti</p>
+
+<div class="search-wrap">
+<div class="search-box">
+<select>
+<option>Semua</option>
+<option>Mahasiswa</option>
+<option>PT</option>
+<option>Prodi</option>
+<option>Ijazah</option>
+</select>
+
+<input placeholder="Kata kunci: [Nama] [PT] [Prodi] [NIM] [NIDN] [NUPTK]">
+
+<button class="search-btn">🔍</button>
+</div>
+</div>
+
+</div>
+
+<!-- ================= MENU GRID ================= -->
+<div class="section">
+<div class="grid">
+
+<div class="card">
+<div class="card-icon">🎓</div>
+<div class="card-title">Program Studi</div>
+<div class="card-sub">Data seluruh program studi</div>
+</div>
+
+<div class="card">
+<div class="card-icon">🏫</div>
+<div class="card-title">Perguruan Tinggi</div>
+<div class="card-sub">Data institusi pendidikan</div>
+</div>
+
+<div class="card">
+<div class="card-icon">📊</div>
+<div class="card-title">Statistik</div>
+<div class="card-sub">Statistik pendidikan tinggi</div>
+</div>
+
+<div class="card">
+<div class="card-icon">📚</div>
+<div class="card-title">Publikasi</div>
+<div class="card-sub">Publikasi resmi</div>
+</div>
+
+<div class="card">
+<div class="card-icon">📢</div>
+<div class="card-title">Pengumuman</div>
+<div class="card-sub">Informasi terbaru</div>
+</div>
+
+<div class="card">
+<div class="card-icon">🗺️</div>
+<div class="card-title">Peta</div>
+<div class="card-sub">Sebaran wilayah</div>
+</div>
+
+</div>
+</div>
+
+<!-- ================= STATISTIK ================= -->
+<div class="section">
+<h3>Statistik</h3>
+
+<div class="stat-grid">
+
+<div class="stat-card stat1">Mahasiswa<br>...</div>
+<div class="stat-card stat2">Dosen<br>...</div>
+<div class="stat-card stat3">Perguruan Tinggi<br>...</div>
+<div class="stat-card stat4">Program Studi<br>...</div>
+
+</div>
+</div>
+
+<!-- ================= PUBLIKASI ================= -->
+<div class="section">
+<h3>Publikasi Terbaru</h3>
+
+<div class="pub-grid">
+
+<div class="pub-card">
+<img src="pub1.jpg">
+<div class="pub-title">Statistik Pendidikan Tinggi 2024</div>
+<div class="btn-unduh">Unduh</div>
+</div>
+
+<div class="pub-card">
+<img src="pub2.jpg">
+<div class="pub-title">Statistik Pendidikan Tinggi 2023</div>
+<div class="btn-unduh">Unduh</div>
+</div>
+
+<div class="pub-card">
+<img src="pub3.jpg">
+<div class="pub-title">Statistik Pendidikan Tinggi 2022</div>
+<div class="btn-unduh">Unduh</div>
+</div>
+
+</div>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<div class="footer">
+
+<div class="footer-left">
+<img src="logo-dikti.png">
+<div>Pusat Data dan Teknologi Informasi</div>
+<small>Kementerian Pendidikan Tinggi, Sains, dan Teknologi</small><br>
+<small>Jl. Jenderal Sudirman, Senayan, Jakarta 10270</small>
+</div>
+
+<div>
+Ikuti Kami<br><br>
+🌐 𝕏  📷  ▶️
+</div>
+
+</div>
+
+</body>
+  </html>
